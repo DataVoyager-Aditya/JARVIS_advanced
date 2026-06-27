@@ -1,0 +1,50 @@
+# JARVIS_advanced — canonical dependency list.
+# Phase 1 (voice). Later phases append their own deps below their own headers.
+
+# --- web / app ---
+fastapi
+uvicorn[standard]
+python-multipart
+websockets
+python-dotenv
+pydantic
+rich
+
+# --- llm (Groq chat + Whisper STT) ---
+groq
+langchain-groq
+langchain-core
+httpx
+requests
+
+# --- voice: TTS ---
+edge-tts          # free, unlimited, no key — primary (en-GB-RyanNeural)
+elevenlabs        # optional upgrade, only used if keys present
+
+# --- voice: STT ---
+faster-whisper    # local offline fallback (Groq Whisper is primary, via groq sdk)
+
+# --- voice: capture / wake / vad / playback ---
+numpy
+sounddevice       # mic capture + audio playback
+soundfile         # wav read/write
+vosk              # free offline wake word — custom phrase "wake up jarvis" (default engine)
+openwakeword      # alt wake engine ("hey_jarvis") when WAKE_ENGINE=oww
+silero-vad        # end-of-speech + barge-in VAD
+torch             # silero-vad backend + Phase 5 emotion models
+transformers      # Phase 5: local emotion (distilroberta) + voice-tone (wav2vec2 SER)
+
+# --- Phase 6: tools + agent ---
+psutil            # system status
+keyboard          # media keys / volume
+pyautogui         # screen control
+mss               # screenshots (Phase 2 vision: screen capture)
+opencv-python-headless  # Phase 2 vision: webcam capture (no GUI deps)
+yt-dlp            # resolve YouTube videos for play_youtube
+win11toast        # real Windows toast notifications (timers/reminders)
+
+# --- Phase 10.L: always-on (auto-start + headless background) ---
+# The headless supervisor + Task-Scheduler autostart use only the stdlib (subprocess/schtasks),
+# so they need NOTHING extra. pystray is ONLY for the optional system-tray icon — JARVIS runs
+# fully headless without it. Pillow (already pulled in for PWA icon generation) draws the icon.
+pystray           # optional tray icon (status dot, mic-mute, open/restart/quit) — Windows tray

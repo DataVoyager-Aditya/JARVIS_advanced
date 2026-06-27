@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#02040a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="JARVIS">
+<title>J.A.R.V.I.S</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+<link rel="icon" href="/static/icons/icon-192.png">
+<style>html,body{margin:0;background:#000;overflow:hidden;}</style>
+<script>
+  window.JARVIS_API = location.origin;
+  window.JARVIS_OWNER = "Aditya";
+  window.JARVIS_SID = localStorage.getItem('jarvis_sid')
+    || (function(){var s=Date.now().toString(36)+Math.random().toString(36).slice(2);localStorage.setItem('jarvis_sid',s);return s;})();
+</script>
+<script src="/static/vendor/react.production.min.js"></script>
+<script src="/static/vendor/react-dom.production.min.js"></script>
+<script src="/static/vendor/babel.min.js"></script>
+<script src="/static/dc-runtime-mobile.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/11cceb23-3034-4bf9-a42c-48460d7f7506.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/11cceb23-3034-4bf9-a42c-48460d7f7506.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/11cceb23-3034-4bf9-a42c-48460d7f7506.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/11cceb23-3034-4bf9-a42c-48460d7f7506.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/static/fonts/11cceb23-3034-4bf9-a42c-48460d7f7506.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/931fe604-3a79-4214-a7a7-77f95023f5b8.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/cedd0aae-abb5-45c1-91d7-28edb32c59a4.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/eeeed5cd-c7b6-4ecf-ae9d-38d38b2fa2ac.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/70bed327-a30a-49ca-8498-be84c9392ed6.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/d89bc831-c0de-4e4f-9a2c-0809d0c72ad0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/38729451-fc13-4d5a-a896-9958753017dc.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/4632ada0-d650-4e53-a4ba-37750086ae20.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/ddf647e9-d3a3-409c-b4ed-6e21fd4223f2.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/98d21a2e-7f44-4792-a097-f47b92ae2f81.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/1014d545-267b-4cc7-9d65-1e1c7bafac73.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/4986acdb-cf21-4728-a610-828664ba8dd9.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/f9f1f3ad-6996-4a7d-8fa9-a831e28e0b81.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/754e250d-e035-4af4-8a19-e55400df2f16.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; width: 100%; background: #02040a; overflow: hidden; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes blinkdot { 0%,100% { opacity: 1; } 50% { opacity: .15; } }
+  @keyframes thinkdot { 0%,80%,100% { opacity:.2; transform:translateY(0);} 40% { opacity:1; transform:translateY(-4px);} }
+  @keyframes callring { 0% { transform: scale(.6); opacity:.8; } 100% { transform: scale(2.1); opacity:0; } }
+  @keyframes activeglow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+  @keyframes scanv { 0% { transform: translateY(-100%); } 100% { transform: translateY(120px); } }
+  @keyframes nodepulse { 0%,100% { opacity: .45; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes edgeflow { to { stroke-dashoffset: -20; } }
+  @keyframes micpulse { 0%,100% { box-shadow:0 0 26px rgba(53,231,255,.4); } 50% { box-shadow:0 0 40px rgba(53,231,255,.7); } }
+</style>
+</helmet>
+
+<div style="position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#000;">
+  <!-- PHONE STAGE 390x844 -->
+  <div ref="{{ stageRef }}" style="position:relative; width:390px; height:844px; transform-origin:center center; overflow:hidden; background:radial-gradient(ellipse 110% 60% at 50% 22%, #082338 0%, #04101f 44%, #02040a 80%); display:flex; flex-direction:column;">
+
+    <!-- starfield -->
+    <div style="position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(1px 1px at 18% 12%, rgba(125,240,255,.5), transparent), radial-gradient(1px 1px at 72% 18%, rgba(125,240,255,.4), transparent), radial-gradient(1px 1px at 40% 26%, rgba(255,178,77,.4), transparent), radial-gradient(1px 1px at 86% 9%, rgba(125,240,255,.4), transparent);"></div>
+    <!-- scanlines -->
+    <div style="position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(to bottom, rgba(125,240,255,.022) 0 1px, transparent 1px 3px); mix-blend-mode:screen;"></div>
+
+    <!-- ===== HEADER ===== -->
+    <div style="position:relative; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 22px 6px;">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:30px; height:30px; position:relative; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.45); border-top-color:#35e7ff; border-radius:50%; animation:spin 3.5s linear infinite;"></div>
+          <div style="width:8px; height:8px; border-radius:50%; background:#35e7ff; box-shadow:0 0 10px 2px #35e7ff;"></div>
+        </div>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif; font-weight:900; font-size:18px; letter-spacing:5px; color:#eafdff; text-shadow:0 0 14px rgba(53,231,255,.7); line-height:1;">J.A.R.V.I.S</div><div style="font-family:'Share Tech Mono',monospace; font-size:8px; letter-spacing:1px; color:#7fd0e8; margin-top:3px;">{{ idName }}</div>
+          <div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+            <span style="width:6px; height:6px; border-radius:50%; background:{{ wakeDotColor }}; box-shadow:0 0 8px {{ wakeDotColor }}; animation:blinkdot 1.8s ease-in-out infinite;"></span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1.5px; color:#7fd0e8;">{{ wakeLabel }}</span>
+          </div>
+        </div>
+      </div>
+      <div style="width:38px; height:38px; border-radius:50%; border:1px solid rgba(53,231,255,.35); display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, rgba(53,231,255,.16), transparent); position:relative;">
+        <div style="position:absolute; inset:-1px; border-radius:50%; border:1px solid transparent; border-top-color:#4dffb0; animation:spin 4s linear infinite;"></div>
+        <span style="font-family:'Orbitron',sans-serif; font-weight:700; font-size:14px; color:#eafdff;">{{ idInitial }}</span>
+      </div>
+    </div>
+
+    <!-- ===== HERO ORB ===== -->
+    <div style="position:relative; flex:0 0 auto; height:300px; display:flex; align-items:center; justify-content:center;">
+      <div style="position:absolute; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(53,231,255,.16) 0%, rgba(53,231,255,.03) 48%, transparent 66%); filter:blur(8px);"></div>
+      <div style="position:absolute; width:268px; height:268px; border-radius:50%; background:repeating-conic-gradient(from 0deg, rgba(53,231,255,.2) 0deg .4deg, transparent .4deg 7deg); -webkit-mask:radial-gradient(closest-side, transparent 97%, #000 98%); mask:radial-gradient(closest-side, transparent 97%, #000 98%); animation:spin 110s linear infinite;"></div>
+      <canvas ref="{{ canvasRef }}" width="480" height="480" style="position:relative; width:288px; height:288px;"></canvas>
+    </div>
+
+    <!-- ===== STATUS + CAPTION ===== -->
+    <div style="position:relative; flex:0 0 auto; padding:4px 26px 0; display:flex; flex-direction:column; align-items:center; gap:9px; text-align:center;">
+      <div style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:4px; color:{{ statusColor }}; text-shadow:0 0 14px {{ statusGlow }}; display:flex; align-items:center; gap:8px;">
+        {{ statusText }}
+        <sc-if value="{{ isThinking }}" hint-placeholder-val="{{ false }}">
+          <span style="display:inline-flex; gap:3px;"><span style="width:4px;height:4px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite;"></span><span style="width:4px;height:4px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite .2s;"></span><span style="width:4px;height:4px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite .4s;"></span></span>
+        </sc-if>
+      </div>
+      <div style="font-family:'Rajdhani',sans-serif; font-weight:500; font-size:17px; line-height:1.28; letter-spacing:.2px; color:#e9fbff; min-height:66px; max-height:88px; overflow:hidden; text-shadow:0 0 14px rgba(53,231,255,.25); text-wrap:pretty;">{{ caption }}<span style="opacity:{{ caretOpacity }}; color:#35e7ff;">▌</span></div>
+    </div>
+
+    <!-- ===== CHIP RAIL ===== -->
+    <div style="position:relative; flex:0 0 auto; margin-top:8px; overflow-x:auto; padding:0 18px; -webkit-overflow-scrolling:touch;">
+      <div style="display:inline-flex; gap:8px; padding-bottom:2px;">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+          <button onclick="{{ onChip }}" data-key="{{ c.key }}" style="flex:0 0 auto; white-space:nowrap; padding:8px 15px; border:1px solid rgba(53,231,255,.28); background:rgba(8,34,52,.5); border-radius:18px; color:#bdeeff; font-family:'Rajdhani',sans-serif; font-weight:600; font-size:13px; letter-spacing:.3px; cursor:pointer;" style-active="border:1px solid rgba(53,231,255,.7); color:#fff;">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ===== FEATURE CARDS (scroll) ===== -->
+    <div style="position:relative; flex:1 1 auto; min-height:0; overflow-y:auto; padding:14px 18px 8px; -webkit-overflow-scrolling:touch;">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+
+        <!-- HOME + IOT -->
+        <div style="position:relative; background:linear-gradient(150deg, rgba(12,34,52,.55), rgba(5,16,28,.4)); border:1px solid rgba(53,231,255,.16); border-radius:14px; padding:14px 15px; overflow:hidden;">
+          <sc-if value="{{ homeActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:14px; border:1px solid rgba(255,178,77,.7); box-shadow:inset 0 0 26px rgba(255,178,77,.12); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:11px;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:3px; color:#7fd8f0;">HOME + IOT</span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#4dffb0;">● {{ homeOnline }} ONLINE</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <sc-for list="{{ homeRows }}" as="d" hint-placeholder-count="5">
+              <div onclick="{{ onToggleDevice }}" data-id="{{ d.id }}" style="display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:10px; background:rgba(8,30,46,.5); border:1px solid rgba(53,231,255,.1); cursor:pointer;">
+                <span style="width:9px; height:9px; flex:0 0 auto; border-radius:50%; background:{{ d.dot }}; box-shadow:0 0 8px {{ d.dot }};"></span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-family:'Rajdhani',sans-serif; font-weight:600; font-size:14px; color:#eafdff; line-height:1.1;">{{ d.name }}</div>
+                  <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.sub }}</div>
+                </div>
+                <span style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; padding:4px 11px; border-radius:12px; color:{{ d.pillColor }}; border:1px solid {{ d.pillBorder }}; background:{{ d.pillBg }};">{{ d.pill }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(53,231,255,.12); font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8;">
+            <span style="width:6px; height:6px; border-radius:50%; background:#4dffb0; box-shadow:0 0 8px #4dffb0;"></span>BOSS · HOME · GEOFENCE ACTIVE
+          </div>
+        </div>
+
+        <!-- PARALLEL AGENTS -->
+        <div style="position:relative; background:linear-gradient(150deg, rgba(12,34,52,.55), rgba(5,16,28,.4)); border:1px solid rgba(53,231,255,.16); border-radius:14px; padding:14px 15px; overflow:hidden;">
+          <sc-if value="{{ agentsActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:14px; border:1px solid rgba(255,178,77,.7); box-shadow:inset 0 0 26px rgba(255,178,77,.12); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:3px; color:#7fd8f0;">PARALLEL AGENTS</span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#4dffb0;">{{ agentCount }} RUNNING</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <sc-for list="{{ agents }}" as="a" hint-placeholder-count="3">
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+                  <span style="width:8px; height:8px; border-radius:50%; border:1px solid #35e7ff; border-top-color:transparent; animation:spin 1s linear infinite;"></span>
+                  <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:1px; color:#eafdff;">{{ a.name }}</span>
+                  <span style="margin-left:auto; font-family:'Share Tech Mono',monospace; font-size:10px; color:#9fe6ff;">{{ a.status }}</span>
+                </div>
+                <div style="height:5px; background:rgba(53,231,255,.1); border-radius:3px; overflow:hidden; position:relative;">
+                  <div style="position:absolute; inset:0; width:{{ a.p }}; background:linear-gradient(90deg, #1aa6c8, #7df0ff); box-shadow:0 0 8px rgba(53,231,255,.6);"></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- UNIFIED COMMS -->
+        <div style="position:relative; background:linear-gradient(150deg, rgba(12,34,52,.55), rgba(5,16,28,.4)); border:1px solid rgba(53,231,255,.16); border-radius:14px; padding:14px 15px; overflow:hidden;">
+          <sc-if value="{{ inboxActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:14px; border:1px solid rgba(255,178,77,.7); box-shadow:inset 0 0 26px rgba(255,178,77,.12); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:11px;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:3px; color:#7fd8f0;">UNIFIED COMMS</span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#ffb24d;">{{ inboxCount }}</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:10px; background:{{ m.bg }}; border:1px solid {{ m.border }};">
+                <span style="width:28px; height:28px; flex:0 0 auto; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-size:10px; font-weight:700; color:{{ m.chColor }}; background:{{ m.chBg }};">{{ m.ch }}</span>
+                <div style="min-width:0; flex:1;">
+                  <div style="font-family:'Rajdhani',sans-serif; font-weight:600; font-size:14px; color:#eafdff; line-height:1.1;">{{ m.from }}</div>
+                  <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ m.txt }}</div>
+                </div>
+                <sc-if value="{{ m.hot }}" hint-placeholder-val="{{ false }}"><span style="width:7px; height:7px; border-radius:50%; background:#ffb24d; box-shadow:0 0 8px #ffb24d; flex:0 0 auto;"></span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <button onclick="{{ onSimCall }}" style="width:100%; margin-top:11px; padding:9px; border:1px solid rgba(255,178,77,.4); background:rgba(255,178,77,.1); border-radius:10px; color:#ffce8a; font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1.5px; cursor:pointer;">▶ SIMULATE INCOMING CALL</button>
+        </div>
+
+        <!-- VISION + GESTURE -->
+        <div style="position:relative; background:linear-gradient(150deg, rgba(12,34,52,.55), rgba(5,16,28,.4)); border:1px solid rgba(53,231,255,.16); border-radius:14px; padding:14px 15px; overflow:hidden;">
+          <sc-if value="{{ visionActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:14px; border:1px solid rgba(255,178,77,.7); box-shadow:inset 0 0 26px rgba(255,178,77,.12); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:3px; color:#7fd8f0;">VISION + GESTURE</span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#ff6b6b;">● REC</span>
+          </div>
+          <div style="position:relative; height:120px; border:1px solid rgba(53,231,255,.25); border-radius:10px; overflow:hidden; background:radial-gradient(circle at 50% 50%, rgba(11,40,58,.8), rgba(2,8,16,.95));">
+            <div style="position:absolute; left:0; right:0; top:0; height:30px; background:linear-gradient(to bottom, rgba(53,231,255,.18), transparent); animation:scanv 2.6s linear infinite;"></div>
+            <div style="position:absolute; left:50%; top:50%; width:46px; height:46px; transform:translate(-50%,-50%); border:1px solid rgba(53,231,255,.5); border-radius:50%;"></div>
+            <div style="position:absolute; left:50%; top:50%; width:80px; height:1px; transform:translate(-50%,-50%); background:rgba(53,231,255,.3);"></div>
+            <div style="position:absolute; left:50%; top:50%; width:1px; height:80px; transform:translate(-50%,-50%); background:rgba(53,231,255,.3);"></div>
+            <sc-if value="{{ visionActive }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; left:32%; top:30%; width:40%; height:42%; border:1px solid #ffb24d; box-shadow:0 0 12px rgba(255,178,77,.5);"><span style="position:absolute; top:-15px; left:0; font-family:'Share Tech Mono',monospace; font-size:9px; color:#ffb24d; background:rgba(2,8,16,.8); padding:1px 4px;">GPU · 98%</span></div>
+            </sc-if>
+            <div style="position:absolute; bottom:7px; left:9px; font-family:'Share Tech Mono',monospace; font-size:9px; color:#7fd0e8;">CAM_01 · 1080p</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:11px; font-family:'Share Tech Mono',monospace; font-size:10px;">
+            <span style="color:#9fe6ff;">GESTURE</span>
+            <span style="display:flex; align-items:center; gap:6px; color:#4dffb0;"><span style="width:6px;height:6px;border-radius:50%;background:#4dffb0;box-shadow:0 0 8px #4dffb0;"></span>ACTIVE · ✋ OPEN-PALM</span>
+          </div>
+        </div>
+
+        <!-- MEMORY GRAPH -->
+        <div style="position:relative; background:linear-gradient(150deg, rgba(12,34,52,.55), rgba(5,16,28,.4)); border:1px solid rgba(53,231,255,.16); border-radius:14px; padding:14px 15px; overflow:hidden;">
+          <sc-if value="{{ memoryActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:14px; border:1px solid rgba(255,178,77,.7); box-shadow:inset 0 0 26px rgba(255,178,77,.12); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:3px; color:#7fd8f0;">MEMORY GRAPH</span>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#7fd0e8;">{{ memStat }}</span>
+          </div>
+          <svg viewBox="0 0 320 140" style="width:100%; height:140px;" ref="{{ memSvgRef }}"></svg>
+        </div>
+
+        <div style="height:6px;"></div>
+      </div>
+    </div>
+
+    <!-- ===== BOTTOM BAR: text + mic ===== -->
+    <div style="position:relative; flex:0 0 auto; display:flex; align-items:center; gap:12px; padding:10px 18px 20px; background:linear-gradient(to top, rgba(2,4,10,.95), rgba(2,4,10,.5) 70%, transparent); border-top:1px solid rgba(53,231,255,.1);">
+      <div style="flex:1 1 auto; display:flex; align-items:center; gap:9px; height:48px; padding:0 15px; border:1px solid rgba(53,231,255,.2); border-radius:24px; background:rgba(6,22,34,.6);">
+        <span style="font-family:'Share Tech Mono',monospace; color:#4f93b0; font-size:13px;">&gt;</span>
+        <input ref="{{ inputRef }}" onkeydown="{{ onKey }}" placeholder="Type a command…" style="flex:1; min-width:0; background:transparent; border:none; outline:none; color:#e9fbff; font-family:'Rajdhani',sans-serif; font-size:15px; letter-spacing:.3px;">
+      </div>
+      <button onclick="{{ onMic }}" style="position:relative; width:54px; height:54px; flex:0 0 auto; border-radius:50%; border:1px solid {{ micBorder }}; background:{{ micBg }}; cursor:pointer; display:flex; align-items:center; justify-content:center; animation:micpulse 2.6s ease-in-out infinite;">
+        <sc-if value="{{ isListening }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(255,178,77,.7); animation:callring 1.6s ease-out infinite;"></div>
+        </sc-if>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ micStroke }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+      </button>
+    </div>
+
+    <!-- ===== INCOMING CALL OVERLAY ===== -->
+    <sc-if value="{{ incomingCall }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 38%, rgba(2,8,16,.6), rgba(2,4,10,.92)); display:flex; flex-direction:column; align-items:center; justify-content:center; backdrop-filter:blur(4px); z-index:30; padding:30px;">
+        <div style="position:relative; width:120px; height:120px; margin-bottom:22px;">
+          <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.6); border-radius:50%; animation:callring 1.8s ease-out infinite;"></div>
+          <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.6); border-radius:50%; animation:callring 1.8s ease-out infinite .9s;"></div>
+          <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle, rgba(53,231,255,.3), rgba(53,231,255,.08)); border:1px solid rgba(53,231,255,.5); display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-weight:700; font-size:38px; color:#eafdff;">{{ callInitial }}</div>
+        </div>
+        <div style="font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:3px; color:#7fd0e8;">INCOMING CALL</div>
+        <div style="font-family:'Orbitron',sans-serif; font-weight:700; font-size:28px; color:#eafdff; margin:8px 0 3px; text-shadow:0 0 16px rgba(53,231,255,.6);">{{ callName }}</div>
+        <div style="font-family:'Share Tech Mono',monospace; font-size:13px; color:#9fe6ff; margin-bottom:40px;">{{ callNumber }}</div>
+        <div style="display:flex; gap:16px; width:100%; max-width:280px;">
+          <button onclick="{{ onDecline }}" style="flex:1; padding:15px; border:1px solid rgba(255,90,90,.5); background:rgba(255,90,90,.14); border-radius:14px; color:#ff9a9a; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; cursor:pointer;">DECLINE</button>
+          <button onclick="{{ onAccept }}" style="flex:1; padding:15px; border:1px solid rgba(77,255,176,.5); background:rgba(77,255,176,.14); border-radius:14px; color:#7dffc4; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; cursor:pointer;">ANSWER</button>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+class Component extends DCLogic {
+  state = {
+    time: "--:--", mode: "idle", caption: "", incomingCall: false,
+    activeModule: null,
+    commsItems: null, commsUnread: 0, memGraph: null, callInfo: null,
+    idInitial: "A", idName: "OWNER",
+    agents: [ { name: "WATCHER", status: "markets · home", p: "100%" } ],
+    homeDevices: [
+      { id: "living",   name: "Living Room", sub: "Lights · 80%", on: true,  kind: "light" },
+      { id: "bedroom",  name: "Bedroom",     sub: "Lights",       on: false, kind: "light" },
+      { id: "climate",  name: "Climate",     sub: "Nest · 22°C",  on: true,  kind: "climate" },
+      { id: "plug",     name: "Studio Plug", sub: "Amp + Desk",   on: true,  kind: "plug" },
+      { id: "security", name: "Perimeter",   sub: "4 Cameras",    on: true,  kind: "security" }
+    ]
+  };
+
+  scenarios = {
+    research: { module: "agents", reply: "On it, Boss. Eight sources queued, two contradictions already flagged — briefing in forty seconds.",
+      agents: [ { name: "RESEARCHER", status: "8 sources", p: "62%" }, { name: "BROWSER-DRV", status: "rendering JS", p: "41%" }, { name: "WATCHER", status: "funding feed", p: "88%" } ] },
+    inbox: { module: "inbox", reply: "Nine across four channels. Two need you — Vikram about Sunday, and a Blue Dart delivery delay. The rest I'll clear." },
+    vision: { module: "vision", reply: "That's an RTX 4090 — triple-fan cooler, twenty-four gigs of VRAM. Want the spec sheet, or the best price?" },
+    identity: { module: "home", reply: "Just you, Boss — voiceprint matched at ninety-nine point two. Everyone else gets silence." },
+    feeds: { module: "memory", reply: "Markets are mixed, Bitcoin's up three percent, and a fresh model drop is trending on Hacker News. Nothing on fire near home." },
+    memory: { module: "memory", reply: "Atlas — your fusion-control rewrite. Blocked on that sensor calibration bug since Tuesday. Deadline in nine days." }
+  };
+
+  componentDidMount() {
+    this._tick(); this._timer = setInterval(() => this._tick(), 1000);
+    this._fit(); this._onResize = () => this._fit();
+    window.addEventListener("resize", this._onResize);
+    window.addEventListener("load", this._onResize);
+    try { this._ro = new ResizeObserver(() => this._fit()); this._ro.observe(document.documentElement); } catch (e) {}
+    this._amp = 0.12; try { this._initCore(); this._drawCore(0.12, 0); } catch (e) {}
+    this._raf = requestAnimationFrame(this._loop);
+    this._t0 = setTimeout(() => { this._speakVisual("Welcome back, sir. All systems online. Standing by.", true); this._initEvents(); this._initComms(); this._initMemGraph(); this._initIdentity(); }, 900);
+  }
+  componentWillUnmount() {
+    clearInterval(this._timer); cancelAnimationFrame(this._raf);
+    window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("load", this._onResize);
+    if (this._ro) this._ro.disconnect();
+    this._clearStream(); clearTimeout(this._t0);
+  }
+
+  _fit() {
+    if (!this._stage) return;
+    const w = window.innerWidth || document.documentElement.clientWidth || 0;
+    const h = window.innerHeight || document.documentElement.clientHeight || 0;
+    const s = Math.min(w / 390, h / 844);
+    if (!s || !isFinite(s) || s <= 0) { requestAnimationFrame(() => this._fit()); return; }
+    this._stage.style.transform = `scale(${s})`;
+  }
+
+  _tick() {
+    const d = new Date(); const p = (n) => String(n).padStart(2, "0");
+    this.setState({ time: `${p(d.getHours())}:${p(d.getMinutes())}` });
+  }
+
+  _loop = () => {
+    const t = performance.now() / 1000;
+    const mode = this.state.mode;
+    let target = 0.12;
+    if (mode === "speaking") { const env = Math.pow(Math.abs(Math.sin(t * 6.2)), 0.55) * 0.6 + Math.abs(Math.sin(t * 2.3)) * 0.25; target = 0.42 + env + (Math.random() - 0.5) * 0.12; }
+    else if (mode === "listening") target = 0.32 + Math.random() * 0.22;
+    else if (mode === "thinking") target = 0.18 + Math.abs(Math.sin(t * 4)) * 0.1;
+    else target = 0.1 + Math.abs(Math.sin(t * 1.3)) * 0.05;
+    target = Math.max(0.05, Math.min(1, target));
+    this._amp += (target - this._amp) * 0.22;
+    try { if (!this._ctx && this._canvas) this._initCore(); this._drawCore(this._amp, t); } catch (err) {}
+    this._raf = requestAnimationFrame(this._loop);
+  };
+
+  _initCore() {
+    const cv = this._canvas; if (!cv || this._ctx) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const SIZE = 480; this._SIZE = SIZE;
+    cv.width = SIZE * dpr; cv.height = SIZE * dpr;
+    const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr); this._ctx = ctx;
+    const norm = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0]/l, v[1]/l, v[2]/l]; };
+    const tt = (1 + Math.sqrt(5)) / 2;
+    let V = [[-1,tt,0],[1,tt,0],[-1,-tt,0],[1,-tt,0],[0,-1,tt],[0,1,tt],[0,-1,-tt],[0,1,-tt],[tt,0,-1],[tt,0,1],[-tt,0,-1],[-tt,0,1]].map(norm);
+    let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+    for (let s = 0; s < 2; s++) {
+      const nF = [], cache = {};
+      const mid = (a, b) => { const k = a<b?a+"_"+b:b+"_"+a; if (cache[k] != null) return cache[k]; const va = V[a], vb = V[b]; V.push(norm([(va[0]+vb[0])/2,(va[1]+vb[1])/2,(va[2]+vb[2])/2])); return (cache[k] = V.length - 1); };
+      for (const f of F) { const a=f[0],b=f[1],c=f[2],ab=mid(a,b),bc=mid(b,c),ca=mid(c,a); nF.push([a,ab,ca],[b,bc,ab],[c,ca,bc],[ab,bc,ca]); }
+      F = nF;
+    }
+    const eset = new Set(), E = [];
+    for (const f of F) for (let i = 0; i < 3; i++) { const a=f[i],b=f[(i+1)%3],k=a<b?a+"-"+b:b+"-"+a; if (!eset.has(k)) { eset.add(k); E.push([a,b]); } }
+    this._V = V; this._E = E; this._VP = new Array(V.length);
+    const NP = 420, ps = [];
+    for (let i = 0; i < NP; i++) ps.push({ ang: Math.random()*Math.PI*2, r: 150 + (Math.random()-0.5)*44 + Math.pow(Math.random(),2)*42, sp: (Math.random()-0.5)*0.0014+0.0005, wob: Math.random()*Math.PI*2, ws: 0.5+Math.random()*1.6, size: 0.5+Math.random()*1.5, br: 0.25+Math.random()*0.75 });
+    this._ps = ps;
+    this._rings = [ { r: 120, seg: 40, w: 5, gap: 0.42, sp: 0.16, op: 0.45 }, { r: 150, seg: 22, w: 12, gap: 0.52, sp: -0.1, op: 0.55 }, { r: 174, seg: 52, w: 4, gap: 0.4, sp: 0.07, op: 0.4 } ];
+    const sp = document.createElement("canvas"); sp.width = sp.height = 16;
+    const sc = sp.getContext("2d"); const gg = sc.createRadialGradient(8,8,0,8,8,8);
+    gg.addColorStop(0, "rgba(200,248,255,1)"); gg.addColorStop(0.4, "rgba(53,231,255,.55)"); gg.addColorStop(1, "rgba(53,231,255,0)");
+    sc.fillStyle = gg; sc.fillRect(0,0,16,16); this._pdot = sp; this._rot = { y: 0 };
+  }
+
+  _drawCore(amp, t) {
+    const ctx = this._ctx; if (!ctx) return;
+    const S = this._SIZE, c = S / 2;
+    ctx.clearRect(0, 0, S, S); ctx.globalCompositeOperation = "lighter";
+    const dot = this._pdot;
+    for (const p of this._ps) {
+      p.ang += p.sp * (1 + amp * 1.6);
+      const wob = Math.sin(t * p.ws + p.wob) * 11 * (0.5 + amp);
+      const rr = (p.r + wob) * (1 + amp * 0.13);
+      const x = c + Math.cos(p.ang) * rr, y = c + Math.sin(p.ang) * rr;
+      const fl = 0.45 + 0.55 * Math.sin(t * 1.8 + p.wob);
+      ctx.globalAlpha = Math.min(1, p.br * (0.42 + amp * 0.5) * fl);
+      const sz = p.size * (1 + amp * 0.5);
+      ctx.drawImage(dot, x - sz*3, y - sz*3, sz*6, sz*6);
+    }
+    ctx.globalAlpha = 1;
+    for (const r of this._rings) {
+      const base = t * r.sp, step = Math.PI*2/r.seg, R0 = r.r * (1 + amp*0.04);
+      ctx.lineWidth = r.w;
+      for (let i = 0; i < r.seg; i++) {
+        const a0 = base + i*step, lit = ((i + ((t*1.5)|0)) % 6 === 0) ? 1 : 0.5;
+        ctx.strokeStyle = "rgba(90,225,255," + (r.op * lit * (0.7 + amp*0.4)).toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(c, c, R0, a0, a0 + step*r.gap); ctx.stroke();
+      }
+    }
+    this._rot.y += 0.0035 + amp*0.005;
+    const ry = this._rot.y, rx = 0.32 + Math.sin(t*0.18)*0.12;
+    const cyy=Math.cos(ry),syy=Math.sin(ry),cxx=Math.cos(rx),sxx=Math.sin(rx);
+    const R = 94 * (1 + amp*0.07), focal = 480, V = this._V, VP = this._VP;
+    for (let i = 0; i < V.length; i++) {
+      const v = V[i];
+      const X = v[0]*cyy - v[2]*syy, Z = v[0]*syy + v[2]*cyy, Y = v[1];
+      const Y2 = Y*cxx - Z*sxx, Z2 = Y*sxx + Z*cxx;
+      const persp = focal / (focal - Z2*R);
+      VP[i] = { x: c + X*R*persp, y: c + Y2*R*persp, z: Z2 };
+    }
+    const E = this._E; ctx.lineWidth = 1;
+    for (let e = 0; e < E.length; e++) {
+      const a = VP[E[e][0]], b = VP[E[e][1]]; const front = (a.z + b.z)*0.5;
+      ctx.strokeStyle = "rgba(125,240,255," + ((0.1 + (front+1)*0.28) * (0.7 + amp*0.3)).toFixed(3) + ")";
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+    for (let i = 0; i < VP.length; i++) {
+      const p = VP[i]; if (p.z < 0) continue;
+      const sz = 1.2 + (p.z+1)*1.1; ctx.globalAlpha = 0.3 + p.z*0.5;
+      ctx.drawImage(dot, p.x - sz, p.y - sz, sz*2, sz*2);
+    }
+    ctx.globalAlpha = 1;
+    const cr = 64 * (1 + amp*0.3);
+    const g = ctx.createRadialGradient(c, c, 0, c, c, cr);
+    g.addColorStop(0, "rgba(220,250,255," + (0.4 + amp*0.4).toFixed(2) + ")");
+    g.addColorStop(0.4, "rgba(53,231,255," + (0.12 + amp*0.18).toFixed(2) + ")");
+    g.addColorStop(1, "rgba(53,231,255,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, cr, 0, 7); ctx.fill();
+    ctx.globalCompositeOperation = "source-over";
+  }
+
+  _clearStream() { (this._streamTimers || []).forEach(clearTimeout); this._streamTimers = []; }
+  _streamText(text, done) {
+    this._clearStream(); const words = text.split(" "); this.setState({ caption: "" }); let acc = "";
+    words.forEach((w, i) => {
+      this._streamTimers.push(setTimeout(() => {
+        acc += (i ? " " : "") + w; this.setState({ caption: acc });
+        if (i === words.length - 1 && done) this._streamTimers.push(setTimeout(done, 600));
+      }, 62 * i + 40));
+    });
+  }
+  _speak(text, module) {
+    this.setState({ mode: "speaking", activeModule: module || null });
+    this._streamText(text, () => { this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900); });
+  }
+  _runScenario = (key) => {
+    const sc = this.scenarios[key]; if (!sc) return;
+    this._clearStream(); clearTimeout(this._idleTimer);
+    this.setState({ mode: "thinking", caption: "", activeModule: null, agents: sc.agents || this.state.agents });
+    this._streamTimers = this._streamTimers || [];
+    this._streamTimers.push(setTimeout(() => this._speak(sc.reply, sc.module), 1000));
+  };
+  _onMic = () => {
+    if (this.state.mode === "thinking") return;
+    const keys = Object.keys(this.scenarios);
+    this._runScenario(keys[Math.floor(Math.random() * keys.length)]);
+  };
+  _send = () => {
+    const el = this._input; if (!el) return; const txt = el.value.trim(); if (!txt) return; el.value = "";
+    this._clearStream(); clearTimeout(this._idleTimer);
+    const c = txt.toLowerCase(); let key = null;
+    if (/research|sweep|look into|investigat|find out/.test(c)) key = "research";
+    else if (/inbox|message|whatsapp|telegram|email|unread/.test(c)) key = "inbox";
+    else if (/see|look|camera|what is|what am i|screen|vision/.test(c)) key = "vision";
+    else if (/who.*(access|there)|trust|verify|voiceprint/.test(c)) key = "identity";
+    else if (/world|news|brief|market|happening/.test(c)) key = "feeds";
+    else if (/project|atlas|remember|recall|tell me about/.test(c)) key = "memory";
+    this.setState({ mode: "thinking", activeModule: null });
+    this._streamTimers = this._streamTimers || [];
+    this._streamTimers.push(setTimeout(() => {
+      if (key) { const sc = this.scenarios[key]; this.setState({ agents: sc.agents || this.state.agents }); this._speak(sc.reply, sc.module); }
+      else this._speak("Understood, Boss. Processing that now — give me a second.", "home");
+    }, 1000));
+  };
+  _onToggleDevice = (e) => {
+    const id = e.currentTarget.dataset.id;
+    this.setState(s => ({ homeDevices: s.homeDevices.map(d => d.id === id ? { ...d, on: !d.on } : d), activeModule: "home" }), () => {
+      const d = this.state.homeDevices.find(x => x.id === id);
+      this._clearStream(); clearTimeout(this._idleTimer);
+      this._speak(d.name + (d.on ? " \u2014 on." : " \u2014 off."), "home");
+    });
+  };
+
+  renderVals() {
+    const mode = this.state.mode, am = this.state.activeModule;
+    const statusMap = {
+      idle: { text: "STANDBY", color: "#7aeaff", glow: "rgba(53,231,255,.6)" },
+      listening: { text: "LISTENING", color: "#ffb24d", glow: "rgba(255,178,77,.7)" },
+      thinking: { text: "PROCESSING", color: "#7df0ff", glow: "rgba(53,231,255,.7)" },
+      speaking: { text: "JARVIS", color: "#9af2ff", glow: "rgba(53,231,255,.7)" }
+    };
+    const st = statusMap[mode];
+    const listening = mode === "listening" || mode === "thinking";
+
+    const msgRaw = [
+      { ch: "WA", from: "Vikram",     txt: "Sunday still on?",  hot: true,  chColor: "#4dffb0", chBg: "rgba(77,255,176,.16)" },
+      { ch: "TG", from: "Aarav",      txt: "sent the files 📎",  hot: false, chColor: "#7df0ff", chBg: "rgba(53,231,255,.16)" },
+      { ch: "IG", from: "@design.co", txt: "collab next month?", hot: false, chColor: "#ff8ad1", chBg: "rgba(255,93,177,.16)" },
+      { ch: "@",  from: "Blue Dart",  txt: "Delivery delayed",   hot: true,  chColor: "#ffce8a", chBg: "rgba(255,178,77,.16)" }
+    ];
+    const messages = (this.state.commsItems || msgRaw).map(m => ({ ...m, bg: m.hot ? "rgba(255,178,77,.07)" : "rgba(8,30,46,.4)", border: m.hot ? "rgba(255,178,77,.3)" : "rgba(53,231,255,.12)" }));
+
+    const KIND_ON = { light: "ON", climate: "AUTO", plug: "ON", security: "ARMED" };
+    const homeRows = this.state.homeDevices.map(d => ({
+      id: d.id, name: d.name, sub: d.sub,
+      pill: d.on ? (KIND_ON[d.kind] || "ON") : "OFF",
+      pillColor: d.on ? "#4dffb0" : "#6f93a4",
+      pillBorder: d.on ? "rgba(77,255,176,.4)" : "rgba(111,147,164,.3)",
+      pillBg: d.on ? "rgba(77,255,176,.12)" : "rgba(111,147,164,.1)",
+      dot: d.on ? "#4dffb0" : "#3a5563"
+    }));
+
+    return {
+      stageRef: (el) => { this._stage = el; },
+      memStat: (this.state.memGraph && this.state.memGraph.stat) || '3-TIER · 12.4k',
+      idInitial: this.state.idInitial, idName: this.state.idName,
+      memSvgRef: (el) => { this._memSvg = el; if (el && this.state.memGraph) this._renderMemSvgM(this.state.memGraph); },
+      canvasRef: (el) => { this._canvas = el; },
+      inputRef: (el) => { this._input = el; },
+      time: this.state.time,
+      wakeLabel: listening ? "HEARING YOU…" : "SAY 'WAKE UP JARVIS'",
+      wakeDotColor: listening ? "#ffb24d" : "#4dffb0",
+      statusText: st.text, statusColor: st.color, statusGlow: st.glow,
+      caption: this.state.caption,
+      caretOpacity: (mode === "speaking" || mode === "thinking") ? 1 : 0,
+      isThinking: mode === "thinking",
+      isListening: mode === "listening" || mode === "thinking",
+      chips: [
+        { label: "Research sweep", key: "research" },
+        { label: "Unified inbox", key: "inbox" },
+        { label: "What am I seeing?", key: "vision" },
+        { label: "World brief", key: "feeds" },
+        { label: "Who's here?", key: "identity" }
+      ],
+      onChip: (e) => this._runScenario(e.currentTarget.dataset.key),
+      onMic: this._onMic,
+      onKey: (e) => { if (e.key === "Enter") this._send(); },
+      onToggleDevice: this._onToggleDevice,
+      homeRows, homeOnline: this.state.homeDevices.filter(d => d.on).length,
+      homeActive: am === "home",
+      agents: this.state.agents, agentCount: this.state.agents.length, agentsActive: am === "agents",
+      messages, inboxCount: (this.state.commsItems ? (this.state.commsUnread || 0) : 9) + ' NEW', inboxActive: am === "inbox",
+      visionActive: am === "vision",
+      memoryActive: am === "memory",
+      micBorder: listening ? "rgba(255,178,77,.8)" : "rgba(53,231,255,.5)",
+      micBg: listening ? "rgba(255,178,77,.18)" : "rgba(53,231,255,.14)",
+      micStroke: listening ? "#ffce8a" : "#cfeeff",
+      incomingCall: this.state.incomingCall,
+      callInitial: (this.state.callInfo && this.state.callInfo.initial) || ((this.state.callInfo && this.state.callInfo.name) ? this.state.callInfo.name.trim().charAt(0).toUpperCase() : "?"),
+      callName: (this.state.callInfo && this.state.callInfo.name) || "Unknown",
+      callNumber: (this.state.callInfo && this.state.callInfo.number) || "",
+      onSimCall: () => this.setState({ incomingCall: true, callInfo: { name: "Test Call", number: "", initial: "T" } }),
+      onAccept: () => this._callAction("answer"),
+      onDecline: () => this._callAction("decline")
+    };
+  }
+
+
+  // ===== real JARVIS backend wiring (replaces the mockup scenarios) =====
+  _ask = (txt) => {
+    txt = (txt || "").trim(); if (!txt) return;
+    this._clearStream(); clearTimeout(this._idleTimer);
+    // a "what is this / use the camera" question uses THIS phone's camera, not the PC's.
+    if (/\b(what(?:'?s| is)?\s+this|what am i (?:holding|showing|looking at)|look at this|can you see this|use (?:the |my )?camera)\b/i.test(txt) && !/screen/i.test(txt)) {
+      this._lookCam(txt); return;
+    }
+    this.setState({ mode: "thinking", activeModule: null, caption: "" });
+    fetch(window.JARVIS_API + "/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: txt, session_id: window.JARVIS_SID })
+    })
+      .then(r => r.json())
+      .then(d => { this._speak((d && d.reply) || "I couldn't reach my services just now, sir.", d && d.module); this._checkEnrollment(); })
+      .catch(() => this._speak("I couldn't reach my services just now, sir."));
+  };
+
+  // ===== Phase 11.2 — guided enrolment ON the phone (after the Owner says "add Vikram as trusted").
+  // Mirrors the PC listener: capture a face selfie + three spoken lines, then enrol — auto-driven,
+  // reusing the mic + front camera. Authorised by the Owner's verified session (no token shipped).
+  _checkEnrollment() {
+    if (this._enrolling) return;
+    fetch(window.JARVIS_API + "/identity/enroll/pending?session=" + encodeURIComponent(window.JARVIS_SID || ""))
+      .then(r => r.json()).then(p => { if (p && p.name) this._runEnrollment(p); }).catch(() => {});
+  }
+
+  async _runEnrollment(p) {
+    if (this._enrolling) return;
+    this._enrolling = true;
+    const sid = encodeURIComponent(window.JARVIS_SID || "");
+    const sents = p.sentences || ["Please read this line aloud."];
+    try {
+      await this._sayEnrol(p.name + ", look at the camera for me.");
+      try {
+        const face = await this._captureFace();
+        if (face) { const ff = new FormData(); ff.append("file", face, "face.jpg");
+          await fetch(window.JARVIS_API + "/identity/enroll/face?session=" + sid, { method: "POST", body: ff }); }
+      } catch (e) {}
+      const need = p.need_voice || 3;
+      for (let i = 0; i < need; i++) {
+        await this._sayEnrol("Now read: " + sents[i % sents.length]);
+        const clip = await this._recordClip(4500);
+        if (clip) { const vf = new FormData(); vf.append("file", clip, "v.wav");
+          await fetch(window.JARVIS_API + "/identity/enroll/voice?session=" + sid, { method: "POST", body: vf }).catch(() => {}); }
+      }
+      let msg = "Enrolment complete, sir.";
+      try { const r = await fetch(window.JARVIS_API + "/identity/enroll/finalize?session=" + sid, { method: "POST" });
+            const d = await r.json(); if (d && d.message) msg = d.message; } catch (e) {}
+      this._speak(msg);
+    } finally { this._enrolling = false; }
+  }
+
+  // speak a prompt and WAIT until it finishes, so we don't record over JARVIS's own voice
+  _sayEnrol(line) {
+    return new Promise((resolve) => {
+      this.setState({ mode: "speaking", caption: line });
+      this._streamText(line, null);
+      this._playTTS(line);
+      setTimeout(resolve, Math.min(6000, 1200 + line.length * 55));
+    });
+  }
+
+  _recordClip(ms) {
+    return navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } })
+      .then((stream) => new Promise((resolve) => {
+        const AC = window.AudioContext || window.webkitAudioContext; const ctx = new AC();
+        const src = ctx.createMediaStreamSource(stream); const proc = ctx.createScriptProcessor(4096, 1, 1);
+        const chunks = []; proc.onaudioprocess = (e) => chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+        src.connect(proc); proc.connect(ctx.destination);
+        this.setState({ mode: "listening", caption: "● listening…" });
+        setTimeout(() => {
+          try { proc.disconnect(); src.disconnect(); stream.getTracks().forEach(t => t.stop()); } catch (e) {}
+          let total = 0; chunks.forEach(c => total += c.length);
+          const buf = new Float32Array(total); let o = 0; chunks.forEach(c => { buf.set(c, o); o += c.length; });
+          try { ctx.close(); } catch (e) {}
+          resolve(total < ctx.sampleRate * 0.3 ? null : new Blob([this._encodeWav(buf, ctx.sampleRate || 16000, 16000)], { type: "audio/wav" }));
+        }, ms);
+      })).catch(() => null);
+  }
+
+  async _captureFace() {
+    let stream = null;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 } } });
+      const v = document.createElement("video"); v.srcObject = stream; v.muted = true; v.playsInline = true; v.setAttribute("playsinline", "");
+      await v.play().catch(() => {}); await new Promise((r) => setTimeout(r, 500));
+      const w = v.videoWidth || 640, h = v.videoHeight || 480;
+      const c = document.createElement("canvas"); c.width = w; c.height = h; c.getContext("2d").drawImage(v, 0, 0, w, h);
+      return await new Promise((res) => c.toBlob(res, "image/jpeg", 0.85));
+    } catch (e) { return null; }
+    finally { try { stream.getTracks().forEach((t) => t.stop()); } catch (e) {} }
+  }
+
+  _send = () => {
+    const el = this._input; if (!el) return;
+    const txt = el.value.trim(); if (!txt) return; el.value = "";
+    this._ask(txt);
+  };
+
+  _runScenario = (key) => {
+    const m = {
+      research: "Give me a short brief on the latest in AI today.",
+      inbox: "What unread messages do I have?",
+      vision: "What am I looking at?",
+      feeds: "Give me a quick world news brief.",
+      identity: "Who has access to you right now?",
+      memory: "What am I working on right now?"
+    };
+    this._ask(m[key] || key);
+  };
+
+  // _speak (direct phone interaction) DOES voice the reply via TTS. The mockup had no audio.
+  _speak(text, module) {
+    this.setState({ mode: "speaking", activeModule: module || null });
+    this._playTTS(text);
+    this._streamText(text, () => { this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900); });
+  }
+
+  // _speakVisual streams the caption WITHOUT audio — used for the PC voice mirror (the desktop is
+  // already speaking aloud) and the local greeting, so the phone never talks over the PC.
+  _speakVisual(text, autoIdle) {
+    clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+    this.setState({ mode: "speaking", activeModule: null });
+    this._streamText(text, autoIdle ? () => { this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900); } : null);
+    if (!autoIdle) this._safetyTimer = setTimeout(() => this.setState({ mode: "idle" }), 25000);
+  }
+
+  async _playTTS(text) {
+    try {
+      if (this._audio) { try { this._audio.pause(); } catch (e) {} }
+      const r = await fetch(window.JARVIS_API + "/voice/tts/stream", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text })
+      });
+      if (!r.ok) return;
+      const url = URL.createObjectURL(await r.blob());
+      const a = new Audio(url); this._audio = a;
+      a.onended = () => URL.revokeObjectURL(url);
+      a.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  // ===== mic -> /voice/stt (free Whisper) =====
+  _onMic = () => {
+    if (this.state.mode === "thinking") return;
+    if (this._recState && this._recState.recording) { this._stopRec(); return; }
+    this._startRec();
+  };
+
+  async _startRec() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } });
+      const AC = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AC();
+      const src = ctx.createMediaStreamSource(stream);
+      const proc = ctx.createScriptProcessor(4096, 1, 1);
+      const chunks = [];
+      proc.onaudioprocess = (e) => { chunks.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+      src.connect(proc); proc.connect(ctx.destination);
+      this._recState = { stream, ctx, proc, src, chunks, sr: ctx.sampleRate, recording: true };
+      this.setState({ mode: "listening", caption: "" });
+    } catch (e) {
+      this._speak("I can't reach your microphone, sir. Check the browser's mic permission.");
+    }
+  }
+
+  _stopRec() {
+    const r = this._recState; if (!r || !r.recording) return; r.recording = false;
+    try { r.proc.disconnect(); r.src.disconnect(); r.stream.getTracks().forEach(t => t.stop()); } catch (e) {}
+    let total = 0; r.chunks.forEach(c => total += c.length);
+    const buf = new Float32Array(total); let o = 0; r.chunks.forEach(c => { buf.set(c, o); o += c.length; });
+    try { r.ctx.close(); } catch (e) {}
+    if (total < r.sr * 0.2) { this.setState({ mode: "idle" }); return; }
+    const wav = this._encodeWav(buf, r.sr, 16000);
+    this.setState({ mode: "thinking" });
+    const blob = new Blob([wav], { type: "audio/wav" });
+    const fd = new FormData(); fd.append("file", blob, "mic.wav");
+    // Phase 11.2 - identify the speaker (server-verified) IN PARALLEL with STT, so the phone gates
+    // by who's actually talking. The voiceprint (~50ms) hides under the STT round-trip.
+    const idfd = new FormData();
+    idfd.append("file", blob, "mic.wav");
+    idfd.append("session", window.JARVIS_SID || "pwa");
+    Promise.all([
+      fetch(window.JARVIS_API + "/identity/whoami", { method: "POST", body: idfd }).then(r2 => r2.json()).catch(() => null),
+      fetch(window.JARVIS_API + "/voice/stt", { method: "POST", body: fd }).then(r2 => r2.json()).catch(() => null),
+    ]).then(([who, sttd]) => {
+      if (who && who.tier === "stranger") { this._strangerDeflect(); return; }
+      const t = (sttd && sttd.text || "").trim();
+      if (t) this._ask(t); else this.setState({ mode: "idle" });
+    }).catch(() => this.setState({ mode: "idle" }));
+  }
+
+  // An unrecognised voice on the phone gets the same in-character deflection as on the PC.
+  _strangerDeflect() {
+    this.setState({ caption: "" });
+    this._speak("You're a stranger to me - not on " + (window.JARVIS_OWNER || "the owner") +
+                "'s list of trusted people - so I can't answer you.");
+  }
+
+  _encodeWav(samples, inRate, outRate) {
+    let data = samples;
+    if (outRate && outRate !== inRate) {
+      const ratio = inRate / outRate, n = Math.floor(samples.length / ratio);
+      data = new Float32Array(n);
+      for (let i = 0; i < n; i++) data[i] = samples[Math.floor(i * ratio)];
+    }
+    const rate = outRate || inRate;
+    const ab = new ArrayBuffer(44 + data.length * 2), view = new DataView(ab);
+    const ws = (off, s) => { for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i)); };
+    ws(0, "RIFF"); view.setUint32(4, 36 + data.length * 2, true); ws(8, "WAVE"); ws(12, "fmt ");
+    view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+    view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+    ws(36, "data"); view.setUint32(40, data.length * 2, true);
+    let off = 44; for (let i = 0; i < data.length; i++) { let s = Math.max(-1, Math.min(1, data[i])); view.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true); off += 2; }
+    return ab;
+  }
+
+  // ===== this phone's camera -> /vision/describe =====
+  async _lookCam(question) {
+    this.setState({ mode: "thinking", activeModule: "vision", caption: "" });
+    let stream = null;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1280 } } });
+    } catch (e) {
+      this._speak("I can't reach your camera, sir — check the browser's camera permission."); return;
+    }
+    try {
+      const video = document.createElement("video");
+      video.srcObject = stream; video.muted = true; video.playsInline = true; video.setAttribute("playsinline", "");
+      await video.play().catch(() => {});
+      await new Promise((r) => setTimeout(r, 500));
+      const w = video.videoWidth || 1280, h = video.videoHeight || 720;
+      const canvas = document.createElement("canvas"); canvas.width = w; canvas.height = h;
+      canvas.getContext("2d").drawImage(video, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.72);
+      const r = await fetch(window.JARVIS_API + "/vision/describe", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ image: dataUrl, question })
+      });
+      const d = await r.json();
+      this._speak((d && d.ok && d.text) || (d && d.error) || "I couldn't make that out, sir.", "vision");
+    } catch (e) {
+      this._speak("Something went wrong with the camera, sir.");
+    } finally {
+      try { stream.getTracks().forEach((t) => t.stop()); } catch (e) {}
+    }
+  }
+
+  // ===== live voice mirror: the PC desktop listener drives this phone HUD over a WebSocket =====
+  _initEvents() {
+    if (this._evtInited) return; this._evtInited = true;
+    const connect = () => {
+      let ws;
+      try {
+        const proto = location.protocol === "https:" ? "wss:" : "ws:";
+        ws = new WebSocket(proto + "//" + location.host + "/events/ws");
+      } catch (e) { setTimeout(connect, 2500); return; }
+      this._evtWs = ws;
+      ws.onmessage = (m) => { try { this._onVoiceEvent(JSON.parse(m.data)); } catch (e) {} };
+      ws.onclose = () => { setTimeout(connect, 2500); };
+      ws.onerror = () => { try { ws.close(); } catch (e) {} };
+    };
+    connect();
+  }
+
+  _onVoiceEvent(ev) {
+    if (!ev || !ev.type) return;
+    if (ev.type === "listening") {
+      this._clearStream(); clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+      this.setState({ mode: "listening", caption: "" });
+    } else if (ev.type === "transcript") {
+      this._clearStream(); clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+      this.setState({ mode: "thinking", caption: "" });
+    } else if (ev.type === "reply") {
+      if (ev.text) this._speakVisual(ev.text); else this.setState({ mode: "idle" });
+    } else if (ev.type === "idle") {
+      clearTimeout(this._safetyTimer);
+      this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 250);
+    } else if (ev.type === "notify") {
+      if (this._pullComms) this._pullComms();
+    } else if (ev.type === "call") {
+      if (ev.kind === "incoming") this._showCall(ev);
+      else { clearTimeout(this._callTimer); this.setState({ incomingCall: false }); }
+    } else if (ev.type === "identity") {
+      this._setIdentity(ev);          // Phase 11 — who's using JARVIS -> header
+    }
+  }
+
+  // ===== Phase 11 identity — show who is using JARVIS in the header =====
+  _initIdentity() {
+    fetch(window.JARVIS_API + "/identity/active")
+      .then(r => r.json()).then(d => { if (d) this._setIdentity(d); }).catch(() => {});
+  }
+
+  _setIdentity(d) {
+    if (!d) return;
+    const tier = d.tier || "owner";
+    const nm = (d.name || "") + (tier && tier !== "owner" ? " · " + tier.toUpperCase() : "");
+    this.setState({ idInitial: d.initial || "A", idName: nm || "OWNER" });
+  }
+
+  // ===== Phase 8 calls: a real incoming ring drives the full-screen call overlay =====
+  _showCall(ev) {
+    const name = ev.name || ev.number || "Unknown";
+    const initial = (ev.name || ev.number || "?").trim().charAt(0).toUpperCase();
+    this.setState({ incomingCall: true, callInfo: { name, number: ev.number || "", initial } });
+    clearTimeout(this._callTimer);
+    this._callTimer = setTimeout(() => this.setState({ incomingCall: false }), 45000);  // ring TTL
+  }
+
+  _callAction(action) {
+    clearTimeout(this._callTimer);
+    this.setState({ incomingCall: false });
+    fetch(window.JARVIS_API + "/calls/command", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action })
+    }).catch(() => {});
+  }
+
+  // ===== UNIFIED COMMS: real WhatsApp / Instagram / email from the backend =====
+  _initComms() {
+    this._pullComms();
+    this._commsTimer = setInterval(() => this._pullComms(), 20000);
+  }
+
+  _pullComms() {
+    fetch(window.JARVIS_API + "/messaging/inbox?limit=6")
+      .then(r => r.json())
+      .then(d => {
+        const meta = {
+          whatsapp:  { ch: "WA", chColor: "#4dffb0", chBg: "rgba(77,255,176,.16)" },
+          instagram: { ch: "IG", chColor: "#ff8ad1", chBg: "rgba(255,93,177,.16)" },
+          email:     { ch: "@",  chColor: "#ffce8a", chBg: "rgba(255,178,77,.16)" }
+        };
+        const items = ((d && d.items) || []).map((it) => {
+          const mm = meta[it.channel] || { ch: "?", chColor: "#7df0ff", chBg: "rgba(53,231,255,.16)" };
+          return { ch: mm.ch, from: it.from || "Unknown", txt: it.preview || "",
+                   hot: it.importance === "high", chColor: mm.chColor, chBg: mm.chBg };
+        });
+        let n = 0; const u = (d && d.unread) || {};
+        Object.keys(u).forEach((k) => { n += u[k]; });
+        this.setState({ commsItems: items, commsUnread: n });
+      })
+      .catch(() => {});
+  }
+
+  // ===== MEMORY GRAPH: real ego-graph from /memory/graph (same node layout as the design) =====
+  _initMemGraph() {
+    const pull = () => fetch(window.JARVIS_API + "/memory/graph")
+      .then(r => r.json())
+      .then(d => { if (d) this.setState({ memGraph: d }, () => this._renderMemSvgM(d)); })
+      .catch(() => {});
+    pull();
+    this._memTimer = setInterval(pull, 30000);
+  }
+
+  _renderMemSvgM(d) {
+    const el = this._memSvg; if (!el) return;
+    const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const nodes = (d && d.nodes) || [];
+    const P = [
+      { cx: 64, cy: 34, r: 10, tx: 64, ty: 20 }, { cx: 68, cy: 108, r: 10, tx: 68, ty: 126 },
+      { cx: 256, cy: 36, r: 10, tx: 256, ty: 22 }, { cx: 252, cy: 106, r: 10, tx: 252, ty: 124 },
+      { cx: 160, cy: 20, r: 9, tx: 160, ty: 11 }
+    ];
+    let s = '<g stroke="rgba(53,231,255,.35)" stroke-width="1" fill="none" stroke-dasharray="3 3" style="animation:edgeflow 1.4s linear infinite;">';
+    P.forEach((p, i) => { if (nodes[i]) s += '<line x1="160" y1="70" x2="' + p.cx + '" y2="' + p.cy + '"></line>'; });
+    s += '</g><g font-family="Share Tech Mono, monospace" font-size="9" fill="#bdeeff">';
+    s += '<circle cx="160" cy="70" r="18" fill="rgba(255,178,77,.18)" stroke="#ffb24d" stroke-width="1.2" style="animation:nodepulse 3s ease-in-out infinite;"></circle>';
+    s += '<text x="160" y="73" text-anchor="middle" fill="#ffce8a">' + esc((d && d.center) || "") + '</text>';
+    P.forEach((p, i) => {
+      if (!nodes[i]) return;
+      s += '<circle cx="' + p.cx + '" cy="' + p.cy + '" r="' + p.r + '" fill="rgba(53,231,255,.15)" stroke="#35e7ff" style="animation:nodepulse 3s ease-in-out infinite ' + (0.3 * (i + 1)).toFixed(1) + 's;"></circle>';
+      s += '<text x="' + p.tx + '" y="' + p.ty + '" text-anchor="middle">' + esc(nodes[i]) + '</text>';
+    });
+    s += '</g>';
+    el.innerHTML = s;
+  }
+
+}
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    let _reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (_reloaded) return; _reloaded = true; location.reload();
+    });
+    window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js')
+      .then(reg => reg.update()).catch(()=>{}));
+  }
+</script>
+</body>
+</html>

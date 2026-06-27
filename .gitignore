@@ -1,0 +1,74 @@
+# ── Secrets & personal data (NEVER commit) ──
+.env
+.env.*
+*.key
+*.pem
+MY_CONTACTS.txt
+MY_PROFILE.md
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+ENV/
+
+# ── Models & large binaries ──
+models/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+*.safetensors
+
+# ── Databases & data ──
+database/
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Logs & runtime ──
+*.log
+logs/
+*.pid
+*.tmp
+tmp/
+
+# ── Node sidecars (WhatsApp web.js) ──
+node_modules/
+sidecars/**/node_modules/
+# Live WhatsApp Web login session + browser cache — SECRET, never commit
+sidecars/**/.wwebjs_auth/
+sidecars/**/.wwebjs_cache/
+
+# ── Bundled third-party binaries (downloaded, not source) ──
+bin/
+*.exe
+*.dll
+
+# ── SQLite sidecar files (WAL/shared-memory) ──
+*.db-shm
+*.db-wal
+
+# ── Android build artifacts ──
+companion-android/build/
+companion-android/.gradle/
+companion-android/local.properties
+*.apk
+*.aab
+
+# ── OS / editor cruft ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

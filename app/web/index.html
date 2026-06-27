@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#02040a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="JARVIS">
+<title>J.A.R.V.I.S</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+<link rel="icon" href="/static/icons/icon-192.png">
+<style>html,body{margin:0;background:#02040a;overflow:hidden;}</style>
+<script>
+  window.JARVIS_API = location.origin;
+  window.JARVIS_SID = localStorage.getItem('jarvis_sid')
+    || (function(){var s=Date.now().toString(36)+Math.random().toString(36).slice(2);localStorage.setItem('jarvis_sid',s);return s;})();
+</script>
+<script src="/static/vendor/react.production.min.js"></script>
+<script src="/static/vendor/react-dom.production.min.js"></script>
+<script src="/static/vendor/babel.min.js"></script>
+<script src="/static/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/94894e7d-d10c-44da-b824-d17d3c7371ef.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/94894e7d-d10c-44da-b824-d17d3c7371ef.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/94894e7d-d10c-44da-b824-d17d3c7371ef.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/94894e7d-d10c-44da-b824-d17d3c7371ef.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/static/fonts/94894e7d-d10c-44da-b824-d17d3c7371ef.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/2fe01058-74cb-45b5-8194-12d4f94a85bc.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/3ffa9592-dae8-4b7a-9576-75b965abda34.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/493ea897-1b54-4b57-be44-52811dea3d99.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/39755749-f79f-4a0e-9a2a-9c6ea0719115.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/8482c403-456f-46f1-b7d6-f914c3690b2d.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/3f029d81-f9de-4589-9e19-004ed5f0d180.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/bb7cba2d-8f14-4322-aab5-a91c4374b5d6.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/e74b8e5e-e20c-41d7-be6d-b666f413f322.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/static/fonts/7638b16a-9ee0-4a26-b950-a4ae0609b261.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/70ae4422-2230-473d-88ac-389a4cfb8904.woff2") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/99191f1a-0fd2-4a10-9265-2d1a04ece8de.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/cc79e4e2-bc24-4c73-88d9-b6e14ee6fdb2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/97fdf65a-d4f0-48db-9284-f169a34787c9.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; width: 100%; background: #02040a; overflow: hidden; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spinrev { to { transform: rotate(-360deg); } }
+  @keyframes shimmer { to { transform: rotate(360deg); } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes activeglow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+  @keyframes nodepulse { 0%,100% { opacity: .45; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes edgeflow { to { stroke-dashoffset: -20; } }
+  @keyframes vwave { 0%,100% { transform: scaleY(.22); } 50% { transform: scaleY(1); } }
+  @keyframes floaty { 0% { transform: translateY(0) translateX(0); opacity:.0; } 15% { opacity:.7; } 85% { opacity:.5; } 100% { transform: translateY(-120px) translateX(18px); opacity:0; } }
+  @keyframes scanv { 0% { transform: translateY(-100%); } 100% { transform: translateY(260px); } }
+  @keyframes blinkdot { 0%,100% { opacity: 1; } 50% { opacity: .15; } }
+  @keyframes thinkdot { 0%,80%,100% { opacity:.2; transform:translateY(0);} 40% { opacity:1; transform:translateY(-4px);} }
+  @keyframes callring { 0% { transform: scale(.6); opacity:.8; } 100% { transform: scale(2.1); opacity:0; } }
+  @keyframes haloPulse { 0%,100% { opacity:.4; } 50% { opacity:.85; } }
+  @keyframes floorpan { from { background-position: 0 0; } to { background-position: 0 60px; } }
+  @keyframes hudflick { 0%,97%,100% { opacity:1; } 98% { opacity:.78; } }
+  @keyframes tumble { from { transform: rotateY(0deg) rotateX(6deg); } to { transform: rotateY(360deg) rotateX(6deg); } }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse 90% 70% at 50% 34%, #082338 0%, #04101f 46%, #02040a 82%); overflow:hidden;">
+
+  <!-- starfield + particles -->
+  <div style="position:absolute; inset:0; background-image:radial-gradient(1px 1px at 20% 30%, rgba(125,240,255,.5), transparent), radial-gradient(1px 1px at 70% 60%, rgba(125,240,255,.4), transparent), radial-gradient(1px 1px at 40% 80%, rgba(125,240,255,.35), transparent), radial-gradient(1px 1px at 85% 20%, rgba(255,178,77,.4), transparent), radial-gradient(1px 1px at 55% 15%, rgba(125,240,255,.4), transparent); background-size:cover;"></div>
+
+  <!-- STAGE: fixed 1440x810, scaled to fit -->
+  <div ref="{{ stageRef }}" style="position:relative; width:1440px; height:810px; transform-origin:center center;">
+
+    <!-- holographic perspective floor -->
+    <div style="position:absolute; left:0; right:0; bottom:-40px; height:340px; perspective:520px; perspective-origin:50% 0; pointer-events:none; opacity:.6; mask-image:linear-gradient(to bottom, #000 0%, transparent 80%); -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 80%);">
+      <div style="position:absolute; inset:-50% -10% 0 -10%; transform:rotateX(74deg); background-image:linear-gradient(rgba(53,231,255,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(53,231,255,.22) 1px, transparent 1px); background-size:60px 60px; animation:floorpan 3.4s linear infinite;"></div>
+    </div>
+
+    <!-- vignette + scanlines -->
+    <div style="position:absolute; inset:0; box-shadow:inset 0 0 260px 50px rgba(0,0,0,.7); pointer-events:none;"></div>
+    <div style="position:absolute; inset:0; background:repeating-linear-gradient(to bottom, rgba(125,240,255,.025) 0 1px, transparent 1px 3px); pointer-events:none; mix-blend-mode:screen;"></div>
+
+    <!-- floating motes -->
+    <div style="position:absolute; left:30%; top:70%; width:3px; height:3px; border-radius:50%; background:#7df0ff; box-shadow:0 0 8px #7df0ff; animation:floaty 7s linear infinite;"></div>
+    <div style="position:absolute; left:62%; top:78%; width:2px; height:2px; border-radius:50%; background:#ffb24d; box-shadow:0 0 8px #ffb24d; animation:floaty 9s linear infinite 1.5s;"></div>
+    <div style="position:absolute; left:48%; top:82%; width:2px; height:2px; border-radius:50%; background:#7df0ff; box-shadow:0 0 8px #7df0ff; animation:floaty 8s linear infinite 3s;"></div>
+    <div style="position:absolute; left:75%; top:66%; width:2px; height:2px; border-radius:50%; background:#7df0ff; box-shadow:0 0 8px #7df0ff; animation:floaty 10s linear infinite 2s;"></div>
+
+    <!-- corner brackets -->
+    <div style="position:absolute; top:14px; left:14px; width:40px; height:40px; border-top:2px solid rgba(53,231,255,.5); border-left:2px solid rgba(53,231,255,.5);"></div>
+    <div style="position:absolute; top:14px; right:14px; width:40px; height:40px; border-top:2px solid rgba(53,231,255,.5); border-right:2px solid rgba(53,231,255,.5);"></div>
+    <div style="position:absolute; bottom:14px; left:14px; width:40px; height:40px; border-bottom:2px solid rgba(53,231,255,.5); border-left:2px solid rgba(53,231,255,.5);"></div>
+    <div style="position:absolute; bottom:14px; right:14px; width:40px; height:40px; border-bottom:2px solid rgba(53,231,255,.5); border-right:2px solid rgba(53,231,255,.5);"></div>
+
+    <!-- ============ TOP TICKER BAR ============ -->
+    <div style="position:absolute; top:24px; left:28px; right:28px; height:46px; display:flex; align-items:center; gap:18px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.3)); border:1px solid rgba(53,231,255,.16); border-radius:9px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), 0 8px 24px rgba(0,0,0,.4); padding:0 18px; overflow:hidden;">
+      <div style="display:flex; align-items:center; gap:12px; flex:0 0 auto;">
+        <div style="width:26px; height:26px; position:relative; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.45); border-top-color:#35e7ff; border-radius:50%; animation:spin 3.5s linear infinite;"></div>
+          <div style="width:7px; height:7px; border-radius:50%; background:#35e7ff; box-shadow:0 0 10px 2px #35e7ff;"></div>
+        </div>
+        <div style="font-family:'Orbitron',sans-serif; font-weight:900; font-size:19px; letter-spacing:7px; color:#eafdff; text-shadow:0 0 16px rgba(53,231,255,.7);">J.A.R.V.I.S</div>
+      </div>
+      <div style="width:1px; height:22px; background:rgba(53,231,255,.2); flex:0 0 auto;"></div>
+      <div style="display:flex; align-items:center; gap:8px; flex:0 0 auto;">
+        <span style="width:7px; height:7px; border-radius:50%; background:{{ wakeDotColor }}; box-shadow:0 0 9px {{ wakeDotColor }}; animation:blinkdot 1.8s ease-in-out infinite;"></span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:2px; color:#9fe6ff; white-space:nowrap;">{{ wakeLabel }}</span>
+      </div>
+      <!-- feeds ticker -->
+      <div style="flex:1 1 auto; overflow:hidden; mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);">
+        <div style="display:inline-flex; gap:34px; white-space:nowrap; animation:ticker 34s linear infinite; font-family:'Share Tech Mono',monospace; font-size:12px; letter-spacing:1px; color:#7fd0e8;">
+          <sc-for list="{{ tickerLoop }}" as="t" hint-placeholder-count="12">
+            <span style="display:inline-flex; align-items:center; gap:8px;"><span style="color:{{ t.c }};">{{ t.tag }}</span>{{ t.text }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="font-family:'Share Tech Mono',monospace; text-align:right; flex:0 0 auto;">
+        <span style="font-size:17px; color:#eafdff; letter-spacing:2px; text-shadow:0 0 12px rgba(53,231,255,.5);">{{ time }}</span>
+        <span style="font-size:10px; color:#5f9fbe; letter-spacing:2px; margin-left:8px;">{{ date }}</span>
+      </div>
+    </div>
+
+    <!-- ============ NEURAL INTELLIGENCE CORE ============ -->
+    <div style="position:absolute; left:720px; top:320px; width:0; height:0; pointer-events:none;">
+      <!-- projection beams -->
+      <div style="position:absolute; left:0; top:150px; width:300px; height:200px; transform:translate(-50%,0); background:linear-gradient(to bottom, rgba(53,231,255,.12), transparent 78%); clip-path:polygon(43% 0, 57% 0, 100% 100%, 0 100%); animation:haloPulse 4s ease-in-out infinite;"></div>
+      <div style="position:absolute; left:0; top:312px; width:220px; height:12px; transform:translate(-50%,0); border-radius:50%; background:radial-gradient(ellipse, rgba(53,231,255,.35), transparent 70%); filter:blur(2px);"></div>
+
+      <!-- reactive halo -->
+      <div ref="{{ haloRef }}" style="position:absolute; left:0; top:0; width:460px; height:460px; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle, rgba(53,231,255,.18) 0%, rgba(53,231,255,.04) 46%, transparent 66%); filter:blur(10px);"></div>
+
+      <!-- faint containment reticle -->
+      <div style="position:absolute; left:0; top:0; width:430px; height:430px; transform:translate(-50%,-50%); border-radius:50%; background:repeating-conic-gradient(from 0deg, rgba(53,231,255,.22) 0deg .4deg, transparent .4deg 7deg); -webkit-mask:radial-gradient(closest-side, transparent 97%, #000 98%); mask:radial-gradient(closest-side, transparent 97%, #000 98%); animation:spin 110s linear infinite;"></div>
+
+      <!-- JARVIS GEODESIC ORB -->
+      <canvas ref="{{ canvasRef }}" width="480" height="480" style="position:absolute; left:0; top:0; width:436px; height:436px; transform:translate(-50%,-50%);"></canvas>
+    </div>
+
+    <!-- ============ CAPTION + VOICE CONTROL ============ -->
+    <div style="position:absolute; left:340px; right:340px; top:492px; display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center;">
+      <sc-if value="{{ userTranscript }}" hint-placeholder-val="">
+        <div style="font-family:'Rajdhani',sans-serif; font-size:16px; letter-spacing:1px; color:#ffce8a; opacity:.9;">“{{ userTranscript }}”</div>
+      </sc-if>
+      <div style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:5px; color:{{ statusColor }}; text-shadow:0 0 16px {{ statusGlow }}; display:flex; align-items:center; gap:10px;">
+        {{ statusText }}
+        <sc-if value="{{ isThinking }}" hint-placeholder-val="{{ false }}">
+          <span style="display:inline-flex; gap:4px;"><span style="width:5px;height:5px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite;"></span><span style="width:5px;height:5px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite .2s;"></span><span style="width:5px;height:5px;border-radius:50%;background:#35e7ff;animation:thinkdot 1.2s infinite .4s;"></span></span>
+        </sc-if>
+      </div>
+      <div style="font-family:'Rajdhani',sans-serif; font-weight:500; font-size:20px; line-height:1.3; letter-spacing:.3px; color:#e9fbff; min-height:54px; max-width:780px; max-height:112px; overflow:hidden; text-shadow:0 0 18px rgba(53,231,255,.25); text-wrap:pretty;">{{ caption }}<span style="opacity:{{ caretOpacity }}; color:#35e7ff;">▌</span></div>
+    </div>
+
+    <!-- control row -->
+    <div style="position:absolute; left:340px; right:340px; top:656px; display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div style="display:flex; gap:9px; flex-wrap:wrap; justify-content:center;">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+          <button onclick="{{ onChip }}" data-key="{{ c.key }}" style="padding:7px 14px; border:1px solid rgba(53,231,255,.28); background:rgba(8,34,52,.5); border-radius:20px; color:#bdeeff; font-family:'Rajdhani',sans-serif; font-weight:600; font-size:13px; letter-spacing:.4px; cursor:pointer; backdrop-filter:blur(4px);" style-hover="border:1px solid rgba(53,231,255,.7); color:#fff; box-shadow:0 0 16px rgba(53,231,255,.4);">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <!-- mic -->
+        <button onclick="{{ onMic }}" style="position:relative; width:62px; height:62px; border-radius:50%; border:1px solid {{ micBorder }}; background:{{ micBg }}; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 26px {{ micGlow }};">
+          <sc-if value="{{ isListening }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(255,178,77,.7); animation:callring 1.6s ease-out infinite;"></div>
+          </sc-if>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ micStroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+        </button>
+        <!-- minimal text fallback -->
+        <div style="display:flex; align-items:center; gap:10px; height:46px; padding:0 14px; border:1px solid rgba(53,231,255,.18); border-radius:23px; background:rgba(6,22,34,.45); width:330px;">
+          <span style="font-family:'Share Tech Mono',monospace; color:#4f93b0; font-size:13px;">&gt;</span>
+          <input ref="{{ inputRef }}" onkeydown="{{ onKey }}" placeholder="or type a command…" style="flex:1; background:transparent; border:none; outline:none; color:#e9fbff; font-family:'Rajdhani',sans-serif; font-size:15px; letter-spacing:.3px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ LEFT PANELS ============ -->
+    <!-- IDENTITY -->
+    <div style="position:absolute; left:28px; top:92px; width:300px; height:148px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden; animation:hudflick 9s infinite;">
+      <sc-if value="{{ identityActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:11px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">01 · IDENTITY</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#4dffb0; letter-spacing:1px;">● {{ identityStatus }}</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(53,231,255,.4); display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, rgba(53,231,255,.18), transparent); position:relative;">
+          <div style="position:absolute; inset:-1px; border-radius:50%; border:1px solid transparent; border-top-color:#4dffb0; animation:spin 4s linear infinite;"></div>
+          <span style="font-family:'Orbitron',sans-serif; font-weight:700; font-size:16px; color:#eafdff;">{{ identityInitial }}</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
+          <div style="font-family:'Rajdhani',sans-serif; font-weight:700; font-size:16px; color:#eafdff; line-height:1; white-space:nowrap;">{{ identityLine }}</div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8; line-height:1; white-space:nowrap;">{{ identityVp }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:2px; height:18px; margin-top:11px;">
+        <sc-for list="{{ vpBars }}" as="v" hint-placeholder-count="22">
+          <div style="flex:1; background:#35e7ff; border-radius:2px; transform-origin:center; transform:scaleY({{ v.s }}); opacity:.8;"></div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- VISION + GESTURE -->
+    <div style="position:absolute; left:28px; top:256px; width:300px; height:250px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden;">
+      <sc-if value="{{ visionActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">02 · VISION + GESTURE</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#ff6b6b; letter-spacing:1px;">● REC</span>
+      </div>
+      <!-- viewport -->
+      <div style="position:relative; height:128px; border:1px solid rgba(53,231,255,.25); border-radius:6px; overflow:hidden; background:radial-gradient(circle at 50% 50%, rgba(11,40,58,.8), rgba(2,8,16,.95));">
+        <div style="position:absolute; left:0; right:0; top:0; height:30px; background:linear-gradient(to bottom, rgba(53,231,255,.18), transparent); animation:scanv 2.6s linear infinite;"></div>
+        <!-- crosshair -->
+        <div style="position:absolute; left:50%; top:50%; width:46px; height:46px; transform:translate(-50%,-50%); border:1px solid rgba(53,231,255,.5); border-radius:50%;"></div>
+        <div style="position:absolute; left:50%; top:50%; width:70px; height:1px; transform:translate(-50%,-50%); background:rgba(53,231,255,.3);"></div>
+        <div style="position:absolute; left:50%; top:50%; width:1px; height:70px; transform:translate(-50%,-50%); background:rgba(53,231,255,.3);"></div>
+        <!-- detection box -->
+        <sc-if value="{{ visionActive }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; left:30%; top:32%; width:42%; height:40%; border:1px solid #ffb24d; box-shadow:0 0 12px rgba(255,178,77,.5);"><span style="position:absolute; top:-15px; left:0; font-family:'Share Tech Mono',monospace; font-size:9px; color:#ffb24d; background:rgba(2,8,16,.8); padding:1px 4px;">GPU · 98%</span></div>
+        </sc-if>
+        <div style="position:absolute; bottom:6px; left:8px; font-family:'Share Tech Mono',monospace; font-size:9px; color:#7fd0e8;">CAM_01 · 1080p</div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:11px; font-family:'Share Tech Mono',monospace; font-size:10px;">
+        <span style="color:#9fe6ff;">GESTURE</span>
+        <span style="display:flex; align-items:center; gap:6px; color:#4dffb0; white-space:nowrap;"><span style="width:6px;height:6px;border-radius:50%;background:#4dffb0;box-shadow:0 0 8px #4dffb0;"></span>ACTIVE · ✋ OPEN-PALM</span>
+      </div>
+    </div>
+
+    <!-- HOME + IOT -->
+    <div style="position:absolute; left:28px; top:522px; width:300px; height:262px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden;">
+      <sc-if value="{{ homeActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:11px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">03 · HOME + IOT</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#4dffb0;">● {{ homeOnline }} ONLINE</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:7px;">
+        <sc-for list="{{ homeRows }}" as="d" hint-placeholder-count="5">
+          <div onclick="{{ onToggleDevice }}" data-id="{{ d.id }}" style="display:flex; align-items:center; gap:10px; padding:6px 9px; border-radius:7px; background:rgba(8,30,46,.4); border:1px solid rgba(53,231,255,.1); cursor:pointer;" style-hover="border:1px solid rgba(53,231,255,.35); background:rgba(12,40,58,.55);">
+            <span style="width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:{{ d.dot }}; box-shadow:0 0 8px {{ d.dot }};"></span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:'Rajdhani',sans-serif; font-weight:600; font-size:13px; color:#eafdff; line-height:1.05;">{{ d.name }}</div>
+              <div style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#7fd0e8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.sub }}</div>
+            </div>
+            <span style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; padding:3px 9px; border-radius:11px; color:{{ d.pillColor }}; border:1px solid {{ d.pillBorder }}; background:{{ d.pillBg }};">{{ d.pill }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(53,231,255,.14); font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#4dffb0; box-shadow:0 0 8px #4dffb0;"></span>
+        BOSS · HOME · GEOFENCE ACTIVE
+      </div>
+    </div>
+
+    <!-- ============ RIGHT PANELS ============ -->
+    <!-- AGENTS -->
+    <div style="position:absolute; right:28px; top:92px; width:300px; height:200px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden;">
+      <sc-if value="{{ agentsActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">04 · PARALLEL AGENTS</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#4dffb0;">{{ agentCount }} RUNNING</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:11px;">
+        <sc-for list="{{ agents }}" as="a" hint-placeholder-count="3">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+              <span style="width:7px; height:7px; border-radius:50%; border:1px solid #35e7ff; border-top-color:transparent; animation:spin 1s linear infinite;"></span>
+              <span style="font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:1px; color:#eafdff;">{{ a.name }}</span>
+              <span style="margin-left:auto; font-family:'Share Tech Mono',monospace; font-size:10px; color:#9fe6ff;">{{ a.status }}</span>
+            </div>
+            <div style="height:4px; background:rgba(53,231,255,.1); border-radius:3px; overflow:hidden; position:relative;">
+              <div style="position:absolute; inset:0; width:{{ a.p }}; background:linear-gradient(90deg, #1aa6c8, #7df0ff); box-shadow:0 0 8px rgba(53,231,255,.6);"></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- MEMORY / KNOWLEDGE GRAPH -->
+    <div style="position:absolute; right:28px; top:308px; width:300px; height:198px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden;">
+      <sc-if value="{{ memoryActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">05 · MEMORY GRAPH</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#7fd0e8;">{{ memStat }}</span>
+      </div>
+      <svg viewBox="0 0 270 130" style="width:100%; height:130px;" ref="{{ memSvgRef }}"></svg>
+    </div>
+
+    <!-- COMMS / UNIFIED INBOX -->
+    <div style="position:absolute; right:28px; top:522px; width:300px; height:262px; background:linear-gradient(150deg, rgba(12,34,52,.5), rgba(5,16,28,.32)); border:1px solid rgba(53,231,255,.16); border-radius:10px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); box-shadow:inset 0 1px 0 rgba(125,240,255,.12), inset 0 0 30px rgba(53,231,255,.05), 0 8px 30px rgba(0,0,0,.45); padding:13px 15px; overflow:hidden;">
+      <sc-if value="{{ inboxActive }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:10px; border:1px solid rgba(255,178,77,.7); box-shadow:0 0 24px rgba(255,178,77,.35), inset 0 0 26px rgba(255,178,77,.1); pointer-events:none; animation:activeglow 1.6s ease-in-out infinite;"></div></sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:11px;">
+        <span style="font-family:'Orbitron',sans-serif; font-size:10px; letter-spacing:3px; color:#7fd8f0;">06 · UNIFIED COMMS</span>
+        <span style="font-family:'Share Tech Mono',monospace; font-size:9px; color:#ffb24d;">{{ inboxCount }}</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+          <div style="display:flex; align-items:center; gap:10px; padding:7px 9px; border-radius:6px; background:{{ m.bg }}; border:1px solid {{ m.border }};">
+            <span style="width:24px; height:24px; flex:0 0 auto; border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-size:9px; font-weight:700; color:{{ m.chColor }}; background:{{ m.chBg }};">{{ m.ch }}</span>
+            <div style="min-width:0; flex:1;">
+              <div style="font-family:'Rajdhani',sans-serif; font-weight:600; font-size:13px; color:#eafdff; line-height:1.1;">{{ m.from }}</div>
+              <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#7fd0e8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ m.txt }}</div>
+            </div>
+            <sc-if value="{{ m.hot }}" hint-placeholder-val="{{ false }}"><span style="width:6px; height:6px; border-radius:50%; background:#ffb24d; box-shadow:0 0 8px #ffb24d; flex:0 0 auto;"></span></sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <button onclick="{{ onSimCall }}" style="width:100%; margin-top:11px; padding:7px; border:1px solid rgba(255,178,77,.4); background:rgba(255,178,77,.1); border-radius:6px; color:#ffce8a; font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1.5px; cursor:pointer;">▶ SIMULATE INCOMING CALL</button>
+    </div>
+
+    <!-- ============ INCOMING CALL OVERLAY ============ -->
+    <sc-if value="{{ incomingCall }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 42%, rgba(2,8,16,.5), rgba(2,4,10,.85)); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(3px); z-index:20;">
+        <div style="width:360px; padding:30px; border-radius:16px; background:linear-gradient(150deg, rgba(14,40,60,.85), rgba(6,18,30,.8)); border:1px solid rgba(53,231,255,.4); box-shadow:0 0 50px rgba(53,231,255,.3), inset 0 0 40px rgba(53,231,255,.08); text-align:center;">
+          <div style="position:relative; width:96px; height:96px; margin:0 auto 18px;">
+            <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.6); border-radius:50%; animation:callring 1.8s ease-out infinite;"></div>
+            <div style="position:absolute; inset:0; border:1px solid rgba(53,231,255,.6); border-radius:50%; animation:callring 1.8s ease-out infinite .9s;"></div>
+            <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle, rgba(53,231,255,.3), rgba(53,231,255,.08)); border:1px solid rgba(53,231,255,.5); display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-weight:700; font-size:30px; color:#eafdff;">M</div>
+          </div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:3px; color:#7fd0e8;">INCOMING CALL</div>
+          <div style="font-family:'Orbitron',sans-serif; font-weight:700; font-size:24px; color:#eafdff; margin:6px 0 2px; text-shadow:0 0 16px rgba(53,231,255,.6);">MOM</div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:12px; color:#9fe6ff; margin-bottom:22px;">+91 ••••• 21487</div>
+          <div style="display:flex; gap:12px; justify-content:center;">
+            <button onclick="{{ onDecline }}" style="flex:1; padding:13px; border:1px solid rgba(255,90,90,.5); background:rgba(255,90,90,.14); border-radius:10px; color:#ff9a9a; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; cursor:pointer;">DECLINE</button>
+            <button onclick="{{ onAccept }}" style="flex:1; padding:13px; border:1px solid rgba(77,255,176,.5); background:rgba(77,255,176,.14); border-radius:10px; color:#7dffc4; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; cursor:pointer;">ANSWER</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = {
+    time: "--:--:--", date: "",
+    tickerItems: null,
+    memGraph: null,
+    commsItems: null,
+    commsUnread: 0,
+    emReal: null,
+    identityLine: "ADITYA · OWNER", identityVp: "VOICEPRINT 99.2%",
+    identityInitial: "A", identityStatus: "VERIFIED",
+    mode: "idle",            // idle | listening | thinking | speaking
+    caption: "",
+    userTranscript: "",
+    activeModule: null,      // agents | inbox | vision | identity | feeds | memory | system | calls
+    incomingCall: false,
+    agents: [
+      { name: "WATCHER", status: "markets · home", p: "100%" }
+    ],
+    latency: 38,
+    homeDevices: [
+      { id: "living",   name: "Living Room", sub: "Lights · 80%", on: true,  kind: "light" },
+      { id: "bedroom",  name: "Bedroom",     sub: "Lights",       on: false, kind: "light" },
+      { id: "climate",  name: "Climate",     sub: "Nest · 22°C",  on: true,  kind: "climate" },
+      { id: "plug",     name: "Studio Plug", sub: "Amp + Desk",   on: true,  kind: "plug" },
+      { id: "security", name: "Perimeter",   sub: "4 Cameras",    on: true,  kind: "security" }
+    ]
+  };
+
+  scenarios = {
+    research: {
+      module: "agents",
+      user: "Run a full sweep on solid-state battery startups.",
+      reply: "On it, Boss. Eight sources queued, two contradictions already flagged — I'll have your briefing in forty seconds.",
+      agents: [
+        { name: "RESEARCHER", status: "8 sources", p: "62%" },
+        { name: "BROWSER-DRV", status: "rendering JS", p: "41%" },
+        { name: "WATCHER", status: "funding feed", p: "88%" }
+      ]
+    },
+    inbox: {
+      module: "inbox",
+      user: "What's in my unified inbox?",
+      reply: "Nine across four channels. Two need you — Vikram about Sunday, and a Blue Dart delivery delay. The rest I'll clear."
+    },
+    vision: {
+      module: "vision",
+      user: "Friday, what am I looking at?",
+      reply: "That's an RTX 4090 — triple-fan cooler, twenty-four gigs of VRAM. Want the spec sheet, or the best price?"
+    },
+    identity: {
+      module: "identity",
+      user: "Who has access right now?",
+      reply: "Just you, Boss — voiceprint matched at ninety-nine point two. Vikram's trusted, but he's not in the room. Everyone else gets silence."
+    },
+    feeds: {
+      module: "feeds",
+      user: "Give me the world brief.",
+      reply: "Markets are mixed, Bitcoin's up three percent, and a fresh model drop is trending on Hacker News. Nothing on fire near home."
+    },
+    memory: {
+      module: "memory",
+      user: "Tell me about Project Atlas.",
+      reply: "Atlas — your fusion-control rewrite. Blocked on that sensor calibration bug since Tuesday. Three linked notes, deadline in nine days."
+    }
+  };
+
+  componentDidMount() {
+    this._tick();
+    this._timer = setInterval(() => this._tick(), 1000);
+    this._latTimer = setInterval(() => this.setState({ latency: 28 + Math.floor(Math.random() * 26) }), 1700);
+    this._fit();
+    this._onResize = () => this._fit();
+    window.addEventListener("resize", this._onResize);
+    window.addEventListener("load", this._onResize);
+    try { this._ro = new ResizeObserver(() => this._fit()); this._ro.observe(document.documentElement); } catch (e) {}
+    this._amp = 0.12; try { this._initCore(); this._drawCore(0.12, 0); } catch (e) {} this._raf = requestAnimationFrame(this._loop);
+    // intro greeting
+    this._t0 = setTimeout(() => {
+      this._speakVisual("Welcome back, sir. All systems online. Standing by.", true); this._initEvents(); this._initTicker(); this._initMemGraph(); this._initComms(); this._initIdentity();
+    }, 900);
+  }
+  componentWillUnmount() {
+    clearInterval(this._timer); clearInterval(this._latTimer);
+    cancelAnimationFrame(this._raf);
+    window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("load", this._onResize);
+    if (this._ro) this._ro.disconnect();
+    this._clearStream();
+    clearTimeout(this._t0);
+  }
+
+  _fit() {
+    if (!this._stage) return;
+    const w = window.innerWidth || document.documentElement.clientWidth || 0;
+    const h = window.innerHeight || document.documentElement.clientHeight || 0;
+    const s = Math.min(w / 1440, h / 810);
+    if (!s || !isFinite(s) || s <= 0) { requestAnimationFrame(() => this._fit()); return; }
+    this._stage.style.transform = `scale(${s})`;
+  }
+
+  _tick() {
+    const d = new Date(); const p = (n) => String(n).padStart(2, "0");
+    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+    const mon = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    this.setState({
+      time: `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`,
+      date: `${days[d.getDay()]} ${p(d.getDate())} ${mon[d.getMonth()]}`
+    });
+  }
+
+  // ---- audio-reactive loop (the speak/listen animation) ----
+  _loop = () => {
+    const t = performance.now() / 1000;
+    const mode = this.state.mode;
+    let target = 0.12;
+    if (mode === "speaking") {
+      const env = Math.pow(Math.abs(Math.sin(t * 6.2)), 0.55) * 0.6 + Math.abs(Math.sin(t * 2.3)) * 0.25;
+      target = 0.42 + env + (Math.random() - 0.5) * 0.12;
+    } else if (mode === "listening") {
+      target = 0.32 + Math.random() * 0.22;
+    } else if (mode === "thinking") {
+      target = 0.18 + Math.abs(Math.sin(t * 4)) * 0.1;
+    } else {
+      target = 0.1 + Math.abs(Math.sin(t * 1.3)) * 0.05;
+    }
+    target = Math.max(0.05, Math.min(1, target));
+    this._amp += (target - this._amp) * 0.22;
+    const amp = this._amp;
+
+    const eq = this._eq && this._eq.children;
+    if (eq) {
+      for (let i = 0; i < eq.length; i++) {
+        const inner = eq[i].firstElementChild; if (!inner) continue;
+        const ph = i * 0.4;
+        let spec = 0.4 + 0.6 * Math.abs(Math.sin(ph + t * 6.5));
+        spec *= 0.55 + 0.45 * Math.abs(Math.sin(ph * 0.7 - t * 3.1));
+        const v = 0.13 + amp * spec;
+        inner.style.transform = `scaleY(${v.toFixed(3)})`;
+        inner.style.opacity = (0.45 + v * 0.55).toFixed(2);
+      }
+    }
+    const le = this._lineEq && this._lineEq.children;
+    if (le) {
+      const n = le.length;
+      for (let i = 0; i < n; i++) {
+        const d2 = Math.abs(i - n / 2) / (n / 2);
+        let v = 0.12 + amp * (1 - d2 * 0.7) * (0.5 + 0.5 * Math.abs(Math.sin(i * 0.6 + t * 8)));
+        le[i].style.transform = `scaleY(${v.toFixed(3)})`;
+      }
+    }
+    if (this._orb) {
+      const sc = 1 + amp * 0.12;
+      this._orb.style.transform = `translate(-50%,-50%) scale(${sc.toFixed(3)})`;
+      this._orb.style.boxShadow = `0 0 ${(60 + amp * 70).toFixed(0)}px ${(6 + amp * 14).toFixed(0)}px rgba(53,231,255,${(0.4 + amp * 0.45).toFixed(2)}), inset 0 0 50px rgba(255,255,255,.3)`;
+    }
+    if (this._core) this._core.style.transform = `translate(-50%,-50%) scale(${(1 + amp * 0.22).toFixed(3)})`;
+    if (this._halo) this._halo.style.opacity = (0.3 + amp * 0.5).toFixed(2);
+
+    try { if (!this._ctx && this._canvas) this._initCore(); this._drawCore(amp, t); } catch (err) {
+      if (!this._coreErr) { this._coreErr = 1; console.error("CORE_ERR", err); }
+    }
+    this._raf = requestAnimationFrame(this._loop);
+  };
+
+  // ---- JARVIS geodesic orb (canvas, voice-reactive) ----
+  _initCore() {
+    const cv = this._canvas; if (!cv || this._ctx) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const SIZE = 480; this._SIZE = SIZE;
+    cv.width = SIZE * dpr; cv.height = SIZE * dpr;
+    const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr); this._ctx = ctx;
+
+    const norm = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+    const tt = (1 + Math.sqrt(5)) / 2;
+    let V = [[-1,tt,0],[1,tt,0],[-1,-tt,0],[1,-tt,0],[0,-1,tt],[0,1,tt],[0,-1,-tt],[0,1,-tt],[tt,0,-1],[tt,0,1],[-tt,0,-1],[-tt,0,1]].map(norm);
+    let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+    for (let s = 0; s < 2; s++) {
+      const nF = [], cache = {};
+      const mid = (a, b) => {
+        const k = a < b ? a + "_" + b : b + "_" + a;
+        if (cache[k] != null) return cache[k];
+        const va = V[a], vb = V[b];
+        V.push(norm([(va[0]+vb[0])/2, (va[1]+vb[1])/2, (va[2]+vb[2])/2]));
+        return (cache[k] = V.length - 1);
+      };
+      for (const f of F) { const a = f[0], b = f[1], c = f[2], ab = mid(a,b), bc = mid(b,c), ca = mid(c,a); nF.push([a,ab,ca],[b,bc,ab],[c,ca,bc],[ab,bc,ca]); }
+      F = nF;
+    }
+    const eset = new Set(), E = [];
+    for (const f of F) for (let i = 0; i < 3; i++) { const a = f[i], b = f[(i+1)%3], k = a<b?a+"-"+b:b+"-"+a; if (!eset.has(k)) { eset.add(k); E.push([a, b]); } }
+    this._V = V; this._E = E; this._VP = new Array(V.length);
+
+    const NP = 460, ps = [];
+    for (let i = 0; i < NP; i++) {
+      ps.push({ ang: Math.random()*Math.PI*2, r: 150 + (Math.random()-0.5)*44 + Math.pow(Math.random(),2)*42, sp: (Math.random()-0.5)*0.0014 + 0.0005, wob: Math.random()*Math.PI*2, ws: 0.5+Math.random()*1.6, size: 0.5+Math.random()*1.5, br: 0.25+Math.random()*0.75 });
+    }
+    this._ps = ps;
+
+    this._rings = [
+      { r: 120, seg: 40, w: 5, gap: 0.42, sp: 0.16, op: 0.45 },
+      { r: 150, seg: 22, w: 12, gap: 0.52, sp: -0.1, op: 0.55 },
+      { r: 174, seg: 52, w: 4, gap: 0.4, sp: 0.07, op: 0.4 }
+    ];
+
+    const sp = document.createElement("canvas"); sp.width = sp.height = 16;
+    const sc = sp.getContext("2d"); const gg = sc.createRadialGradient(8,8,0,8,8,8);
+    gg.addColorStop(0, "rgba(200,248,255,1)"); gg.addColorStop(0.4, "rgba(53,231,255,.55)"); gg.addColorStop(1, "rgba(53,231,255,0)");
+    sc.fillStyle = gg; sc.fillRect(0,0,16,16); this._pdot = sp;
+    this._rot = { y: 0 };
+  }
+
+  _drawCore(amp, t) {
+    const ctx = this._ctx; if (!ctx) return;
+    const S = this._SIZE, c = S / 2;
+    ctx.clearRect(0, 0, S, S);
+    ctx.globalCompositeOperation = "lighter";
+
+    const dot = this._pdot;
+    for (const p of this._ps) {
+      p.ang += p.sp * (1 + amp * 1.6);
+      const wob = Math.sin(t * p.ws + p.wob) * 11 * (0.5 + amp);
+      const rr = (p.r + wob) * (1 + amp * 0.13);
+      const x = c + Math.cos(p.ang) * rr, y = c + Math.sin(p.ang) * rr;
+      const fl = 0.45 + 0.55 * Math.sin(t * 1.8 + p.wob);
+      ctx.globalAlpha = Math.min(1, p.br * (0.42 + amp * 0.5) * fl);
+      const sz = p.size * (1 + amp * 0.5);
+      ctx.drawImage(dot, x - sz * 3, y - sz * 3, sz * 6, sz * 6);
+    }
+    ctx.globalAlpha = 1;
+
+    for (const r of this._rings) {
+      const base = t * r.sp, step = Math.PI * 2 / r.seg, R0 = r.r * (1 + amp * 0.04);
+      ctx.lineWidth = r.w;
+      for (let i = 0; i < r.seg; i++) {
+        const a0 = base + i * step, lit = ((i + ((t * 1.5) | 0)) % 6 === 0) ? 1 : 0.5;
+        ctx.strokeStyle = "rgba(90,225,255," + (r.op * lit * (0.7 + amp * 0.4)).toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(c, c, R0, a0, a0 + step * r.gap); ctx.stroke();
+      }
+    }
+
+    this._rot.y += 0.0035 + amp * 0.005;
+    const ry = this._rot.y, rx = 0.32 + Math.sin(t * 0.18) * 0.12;
+    const cyy = Math.cos(ry), syy = Math.sin(ry), cxx = Math.cos(rx), sxx = Math.sin(rx);
+    const R = 94 * (1 + amp * 0.07), focal = 480, V = this._V, VP = this._VP;
+    for (let i = 0; i < V.length; i++) {
+      const v = V[i];
+      const X = v[0] * cyy - v[2] * syy, Z = v[0] * syy + v[2] * cyy, Y = v[1];
+      const Y2 = Y * cxx - Z * sxx, Z2 = Y * sxx + Z * cxx;
+      const persp = focal / (focal - Z2 * R);
+      VP[i] = { x: c + X * R * persp, y: c + Y2 * R * persp, z: Z2 };
+    }
+    const E = this._E;
+    ctx.lineWidth = 1;
+    for (let e = 0; e < E.length; e++) {
+      const a = VP[E[e][0]], b = VP[E[e][1]];
+      const front = (a.z + b.z) * 0.5;
+      ctx.strokeStyle = "rgba(125,240,255," + ((0.1 + (front + 1) * 0.28) * (0.7 + amp * 0.3)).toFixed(3) + ")";
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+    for (let i = 0; i < VP.length; i++) {
+      const p = VP[i]; if (p.z < 0) continue;
+      const sz = 1.2 + (p.z + 1) * 1.1;
+      ctx.globalAlpha = 0.3 + p.z * 0.5;
+      ctx.drawImage(dot, p.x - sz, p.y - sz, sz * 2, sz * 2);
+    }
+    ctx.globalAlpha = 1;
+
+    const cr = 64 * (1 + amp * 0.3);
+    const g = ctx.createRadialGradient(c, c, 0, c, c, cr);
+    g.addColorStop(0, "rgba(220,250,255," + (0.4 + amp * 0.4).toFixed(2) + ")");
+    g.addColorStop(0.4, "rgba(53,231,255," + (0.12 + amp * 0.18).toFixed(2) + ")");
+    g.addColorStop(1, "rgba(53,231,255,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, cr, 0, 7); ctx.fill();
+
+    ctx.globalCompositeOperation = "source-over";
+  }
+
+  // ---- conversation flow ----
+  _clearStream() { (this._streamTimers || []).forEach(clearTimeout); this._streamTimers = []; }
+
+  _streamText(text, role, done) {
+    this._clearStream();
+    const words = text.split(" ");
+    this.setState({ caption: "" });
+    let acc = "";
+    words.forEach((w, i) => {
+      this._streamTimers.push(setTimeout(() => {
+        acc += (i ? " " : "") + w;
+        this.setState({ caption: acc });
+        if (i === words.length - 1 && done) this._streamTimers.push(setTimeout(done, 600));
+      }, (role === "user" ? 55 : 65) * i + 40));
+    });
+  }
+
+  _speak(text, module) {
+    this.setState({ mode: "speaking", activeModule: module || null });
+    this._streamText(text, "jarvis", () => {
+      this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900);
+    });
+  }
+
+  _runScenario = (key) => {
+    const sc = this.scenarios[key];
+    if (!sc) return;
+    this._clearStream(); clearTimeout(this._idleTimer);
+    this.setState({ mode: "listening", caption: "", userTranscript: "", activeModule: null, agents: sc.agents || this.state.agents });
+    this._streamText(sc.user, "user", () => {
+      this.setState({ mode: "thinking" });
+      this._streamTimers.push(setTimeout(() => {
+        this.setState({ activeModule: sc.module, agents: sc.agents || [{ name: "WATCHER", status: "markets · home", p: "100%" }] });
+        this._speak(sc.reply, sc.module);
+      }, 1100));
+    });
+    // userTranscript mirrors the streamed caption during listening
+    this._mirror = setInterval(() => {
+      if (this.state.mode === "listening") this.setState({ userTranscript: this.state.caption });
+      else clearInterval(this._mirror);
+    }, 60);
+  };
+
+  _onMic = () => {
+    if (this.state.mode === "listening" || this.state.mode === "thinking") return;
+    const keys = Object.keys(this.scenarios);
+    this._runScenario(keys[Math.floor(Math.random() * keys.length)]);
+  };
+
+  _send = () => {
+    const el = this._input; if (!el) return;
+    const txt = el.value.trim(); if (!txt) return; el.value = "";
+    this._clearStream(); clearTimeout(this._idleTimer);
+    const c = txt.toLowerCase();
+    let key = null;
+    if (/research|sweep|look into|investigat|find out/.test(c)) key = "research";
+    else if (/inbox|message|whatsapp|telegram|email|unread/.test(c)) key = "inbox";
+    else if (/see|look|camera|what is|what am i|screen|vision/.test(c)) key = "vision";
+    else if (/who.*(access|there)|trust|verify|voiceprint/.test(c)) key = "identity";
+    else if (/world|news|brief|market|happening/.test(c)) key = "feeds";
+    else if (/project|atlas|remember|recall|tell me about/.test(c)) key = "memory";
+    this.setState({ userTranscript: txt, mode: "thinking", activeModule: null });
+    this._streamTimers = this._streamTimers || [];
+    this._streamTimers.push(setTimeout(() => {
+      if (key) { const sc = this.scenarios[key]; this.setState({ agents: sc.agents || this.state.agents }); this._speak(sc.reply, sc.module); }
+      else this._speak("Understood, Boss. Processing that now — give me just a second.", "home");
+    }, 1000));
+  };
+
+  _onToggleDevice = (e) => {
+    const id = e.currentTarget.dataset.id;
+    this.setState(s => ({
+      homeDevices: s.homeDevices.map(d => d.id === id ? { ...d, on: !d.on } : d),
+      activeModule: "home"
+    }), () => {
+      const d = this.state.homeDevices.find(x => x.id === id);
+      this._clearStream(); clearTimeout(this._idleTimer);
+      this._speak(d.name + (d.on ? " \u2014 on." : " \u2014 off."), "home");
+    });
+  };
+
+  renderVals() {
+    const N = 72, R = 108;
+    const eqBars = Array.from({ length: N }, (_, i) => {
+      const a = (360 / N) * i;
+      return { wrap: { position: "absolute", left: "0", top: "0", transformOrigin: "center", transform: `rotate(${a}deg) translateY(-${R}px)` } };
+    });
+    const lineBars = Array.from({ length: 48 }, () => ({}));
+    const vpBars = Array.from({ length: 22 }, (_, i) => ({ s: (0.3 + Math.abs(Math.sin(i * 1.7)) * 0.7).toFixed(2) }));
+
+    const providers = [
+      { n: "GROQ",       w: "72%", label: "72%", color: "#4dffb0", c1: "#1aa6c8", c2: "#7df0ff" },
+      { n: "GEMINI",     w: "54%", label: "54%", color: "#7fd0e8", c1: "#1aa6c8", c2: "#7df0ff" },
+      { n: "CEREBRAS",   w: "88%", label: "88%", color: "#4dffb0", c1: "#1aa6c8", c2: "#7df0ff" },
+      { n: "OPENROUTER", w: "31%", label: "31%", color: "#ffb24d", c1: "#b06a1a", c2: "#ffb24d" },
+      { n: "ELEVENLABS", w: "63%", label: "63%", color: "#7fd0e8", c1: "#1aa6c8", c2: "#7df0ff" }
+    ];
+
+    const msgRaw = [
+      { ch: "WA", from: "Vikram",     txt: "Sunday still on?",     hot: true,  chColor: "#4dffb0", chBg: "rgba(77,255,176,.16)" },
+      { ch: "TG", from: "Aarav",      txt: "sent the files 📎",     hot: false, chColor: "#7df0ff", chBg: "rgba(53,231,255,.16)" },
+      { ch: "IG", from: "@design.co", txt: "collab next month?",    hot: false, chColor: "#ff8ad1", chBg: "rgba(255,93,177,.16)" },
+      { ch: "@",  from: "Blue Dart",  txt: "Delivery delayed",      hot: true,  chColor: "#ffce8a", chBg: "rgba(255,178,77,.16)" }
+    ];
+    const messages = (this.state.commsItems || msgRaw).map(m => ({ ...m, bg: m.hot ? "rgba(255,178,77,.07)" : "rgba(8,30,46,.4)", border: m.hot ? "rgba(255,178,77,.3)" : "rgba(53,231,255,.12)" }));
+
+    const tickerItems = this.state.tickerItems || [
+      { tag: "BTC", c: "#4dffb0", text: "+3.1%  ₿ 71,240" },
+      { tag: "HN",  c: "#ffb24d", text: "New open-weight model trending" },
+      { tag: "WX",  c: "#7df0ff", text: "Bangalore 28°C · AQI 96" },
+      { tag: "REPO",c: "#4dffb0", text: "jarvis-core +50 ★ / 1h" },
+      { tag: "NEWS",c: "#7df0ff", text: "Fusion startup closes $80M round" },
+      { tag: "CAL", c: "#ffb24d", text: "11:00 standup confirmed" }
+    ];
+
+    const mode = this.state.mode;
+    const am = this.state.activeModule;
+    const statusMap = {
+      idle:      { text: "STANDBY", color: "#7aeaff", glow: "rgba(53,231,255,.6)" },
+      listening: { text: "LISTENING", color: "#ffb24d", glow: "rgba(255,178,77,.7)" },
+      thinking:  { text: "PROCESSING", color: "#7df0ff", glow: "rgba(53,231,255,.7)" },
+      speaking:  { text: "JARVIS", color: "#9af2ff", glow: "rgba(53,231,255,.7)" }
+    };
+    const st = statusMap[mode];
+
+    const chips = [
+      { label: "Run a research sweep", key: "research" },
+      { label: "Unified inbox",        key: "inbox" },
+      { label: "What am I looking at?", key: "vision" },
+      { label: "World brief",          key: "feeds" },
+      { label: "Who has access?",      key: "identity" }
+    ];
+
+    const EMO = {
+      idle:      { reg: "NEUTRAL",        warmth: 70, play: 54, urgency: 12, focus: 60, humor: 0.45 },
+      listening: { reg: "ATTENTIVE",      warmth: 74, play: 48, urgency: 28, focus: 88, humor: 0.30 },
+      thinking:  { reg: "FOCUSED",        warmth: 66, play: 40, urgency: 34, focus: 96, humor: 0.25 },
+      speaking:  { reg: "WARM · DRY-WIT", warmth: 88, play: 72, urgency: 16, focus: 78, humor: 0.70 }
+    };
+    const em = this.state.emReal || EMO[mode];
+    const emotions = [
+      { label: "WARMTH",      value: em.warmth,  w: em.warmth + "%",  c1: "#1aa6c8", c2: "#7df0ff" },
+      { label: "PLAYFULNESS", value: em.play,    w: em.play + "%",    c1: "#1aa6c8", c2: "#7df0ff" },
+      { label: "URGENCY",     value: em.urgency, w: em.urgency + "%", c1: "#b06a1a", c2: "#ffb24d" },
+      { label: "FOCUS",       value: em.focus,   w: em.focus + "%",   c1: "#1aa6c8", c2: "#7df0ff" }
+    ];
+
+    const listening = mode === "listening";
+
+    const KIND_ON = { light: "ON", climate: "AUTO", plug: "ON", security: "ARMED" };
+    const homeRows = this.state.homeDevices.map(d => ({
+      id: d.id, name: d.name, sub: d.sub,
+      pill: d.on ? (KIND_ON[d.kind] || "ON") : "OFF",
+      pillColor: d.on ? "#4dffb0" : "#6f93a4",
+      pillBorder: d.on ? "rgba(77,255,176,.4)" : "rgba(111,147,164,.3)",
+      pillBg: d.on ? "rgba(77,255,176,.12)" : "rgba(111,147,164,.1)",
+      dot: d.on ? "#4dffb0" : "#3a5563"
+    }));
+    const homeOnline = this.state.homeDevices.filter(d => d.on).length;
+
+    return {
+      memStat: (this.state.memGraph && this.state.memGraph.stat) || '3-TIER',
+      memSvgRef: (el) => { this._memSvg = el; },
+      inboxCount: (this.state.commsItems ? (this.state.commsUnread || 0) : 9) + ' NEW',
+      identityLine: this.state.identityLine, identityVp: this.state.identityVp,
+      identityInitial: this.state.identityInitial, identityStatus: this.state.identityStatus,
+      rootRef: (el) => { this._root = el; },
+      stageRef: (el) => { this._stage = el; },
+      eqRef: (el) => { this._eq = el; },
+      lineEqRef: (el) => { this._lineEq = el; },
+      orbRef: (el) => { this._orb = el; },
+      coreRef: (el) => { this._core = el; },
+      haloRef: (el) => { this._halo = el; },
+      canvasRef: (el) => { this._canvas = el; },
+      inputRef: (el) => { this._input = el; },
+
+      time: this.state.time, date: this.state.date,
+      wakeLabel: mode === "listening" ? "HEARING YOU…" : (mode === "thinking" ? "PROCESSING…" : (mode === "speaking" ? "RESPONDING…" : "AWAITING 'WAKE UP JARVIS'")),
+      wakeDotColor: listening ? "#ffb24d" : "#4dffb0",
+
+      eqBars, lineBars, vpBars, messages,
+      emotions, register: em.reg, humorBudget: em.humor.toFixed(2), humorWidth: Math.round(em.humor * 100) + "%",
+      tickerLoop: [...tickerItems, ...tickerItems],
+
+      caption: this.state.caption,
+      userTranscript: this.state.userTranscript,
+      statusText: st.text, statusColor: st.color, statusGlow: st.glow,
+      caretOpacity: (mode === "speaking" || mode === "thinking") ? 1 : 0,
+
+      isListening: listening,
+      isThinking: mode === "thinking",
+
+      agents: this.state.agents,
+      agentCount: this.state.agents.length,
+      routeModel: "llama-3.3-70b",
+      latency: this.state.latency,
+
+      identityActive: am === "identity",
+      visionActive: am === "vision",
+      homeActive: am === "home",
+      homeRows, homeOnline,
+      agentsActive: am === "agents",
+      memoryActive: am === "memory",
+      inboxActive: am === "inbox",
+      feedsActive: am === "feeds",
+
+      micBorder: listening ? "rgba(255,178,77,.8)" : "rgba(53,231,255,.5)",
+      micBg: listening ? "rgba(255,178,77,.18)" : "rgba(53,231,255,.14)",
+      micGlow: listening ? "rgba(255,178,77,.5)" : "rgba(53,231,255,.4)",
+      micStroke: listening ? "#ffce8a" : "#cfeeff",
+
+      chips,
+      onChip: (e) => this._runScenario(e.currentTarget.dataset.key),
+      onMic: this._onMic,
+      onToggleDevice: this._onToggleDevice,
+      onKey: (e) => { if (e.key === "Enter") this._send(); },
+
+      incomingCall: this.state.incomingCall,
+      onSimCall: () => this.setState({ incomingCall: true }),
+      onAccept: () => { this.setState({ incomingCall: false }); this._clearStream(); this._speak("Connecting you to Mom now, Boss."); },
+      onDecline: () => { this.setState({ incomingCall: false }); this._clearStream(); this._speak("Declined. I'll let her know you'll call back this evening.", "inbox"); }
+    };
+  }
+
+
+  // ===== Phase 9: real JARVIS backend wiring (overrides the mockup scenarios) =====
+  _ask = (txt) => {
+    this._clearStream(); clearTimeout(this._idleTimer);
+    // Phase 2 — camera-vision intent in the BROWSER uses THIS device's camera (so a phone uses
+    // its own camera, not the PC's). Screen questions keep going to /chat — the read_screen tool
+    // sees the PC screen where the backend runs.
+    if (/\b(what(?:'?s| is)?\s+this|what am i (?:holding|showing|looking at)|look at this|can you see this|use (?:the |my )?camera)\b/i.test(txt) && !/screen/i.test(txt)) {
+      this._lookCam(txt); return;
+    }
+    this.setState({ userTranscript: txt, mode: "thinking", activeModule: null });
+    fetch(window.JARVIS_API + "/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: txt, session_id: window.JARVIS_SID })
+    })
+      .then(r => r.json())
+      .then(d => { this._speak((d && d.reply) || "I couldn't reach my services just now, sir.", d && d.module); })
+      .catch(() => { this._speak("I couldn't reach my services just now, sir."); });
+  };
+
+  // Phase 2 — grab a frame from this device's camera and ask the vision model about it.
+  // Lights up the VISION panel (visionActive) while it captures, then speaks the answer.
+  async _lookCam(question) {
+    this.setState({ userTranscript: question, mode: "thinking", visionActive: true });
+    let stream = null;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1280 } } });
+    } catch (e) {
+      this.setState({ visionActive: false });
+      this._speak("I can't reach your camera, sir — check the browser's camera permission."); return;
+    }
+    try {
+      const video = document.createElement("video");
+      video.srcObject = stream; video.muted = true; video.playsInline = true; video.setAttribute("playsinline", "");
+      await video.play().catch(() => {});
+      await new Promise((r) => setTimeout(r, 500));            // let exposure/white-balance settle
+      const w = video.videoWidth || 1280, h = video.videoHeight || 720;
+      const canvas = document.createElement("canvas"); canvas.width = w; canvas.height = h;
+      canvas.getContext("2d").drawImage(video, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.72);
+      this._visionFrame(dataUrl);                              // show what the camera grabbed
+      const r = await fetch(window.JARVIS_API + "/vision/describe", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: dataUrl, question })
+      });
+      const d = await r.json();
+      this._speak((d && d.ok && d.text) || (d && d.error) || "I couldn't make that out, sir.", "vision");
+    } catch (e) {
+      this._speak("Something went wrong with the camera, sir.");
+    } finally {
+      try { stream.getTracks().forEach((t) => t.stop()); } catch (e) {}
+      this.setState({ visionActive: false });
+    }
+  }
+
+  _send = () => {
+    const el = this._input; if (!el) return;
+    const txt = el.value.trim(); if (!txt) return; el.value = "";
+    this._ask(txt);
+  };
+
+  _runScenario = (key) => {
+    const m = {
+      research: "Give me a short brief on the latest in AI today.",
+      inbox: "What reminders do I have set?",
+      vision: "What's on my screen right now?",
+      feeds: "Give me a quick world news brief.",
+      identity: "Who has access to you right now?"
+    };
+    this._ask(m[key] || key);
+  };
+
+  _speak(text, module) {
+    this.setState({ mode: "speaking", activeModule: module || null });
+    this._playTTS(text);
+    this._streamText(text, "jarvis", () => {
+      this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900);
+    });
+  }
+
+  async _playTTS(text) {
+    try {
+      if (this._audio) { try { this._audio.pause(); } catch (e) {} }
+      const r = await fetch(window.JARVIS_API + "/voice/tts/stream", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+      });
+      if (!r.ok) return;
+      const blob = await r.blob();
+      const url = URL.createObjectURL(blob);
+      const a = new Audio(url); this._audio = a;
+      a.onended = () => URL.revokeObjectURL(url);
+      a.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  _onMic = () => {
+    if (this.state.mode === "thinking") return;
+    if (this._recState && this._recState.recording) { this._stopRec(); return; }
+    this._startRec();
+  };
+
+  // ===== hands-free wake word: "wake up jarvis" via the browser's free SpeechRecognition =====
+  _initWake() {
+    if (this._wakeInited) return;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { console.warn("[jarvis] SpeechRecognition unavailable in this browser — use the mic button."); return; }
+    this._wakeInited = true;
+    const rec = new SR();
+    rec.continuous = true; rec.interimResults = true; rec.lang = window.JARVIS_LANG || "en-US";
+    rec.onresult = (e) => this._onWakeResult(e);
+    rec.onerror = (ev) => { if (ev.error === "not-allowed" || ev.error === "service-not-allowed") this._wakeOn = false; };
+    rec.onend = () => { if (this._wakeOn) { try { rec.start(); } catch (e) {} } };
+    this._wake = rec; this._wakeOn = true;
+    this._startWake();
+    // Some browsers require a user gesture before the first start — retry on any tap.
+    document.addEventListener("pointerdown", () => this._startWake());
+  }
+
+  _startWake() {
+    if (!this._wake || !this._wakeOn) return;
+    try { this._wake.start(); } catch (e) { /* already running */ }
+  }
+
+  // ===== live voice mirror: the desktop listener drives the HUD over a WebSocket =====
+  // The PC listener does the hands-free wake word + STT + reply + speaks aloud; here we just
+  // ANIMATE to it (no browser TTS — the PC is already talking).
+  _initEvents() {
+    if (this._evtInited) return; this._evtInited = true;
+    const connect = () => {
+      let ws;
+      try {
+        const proto = location.protocol === "https:" ? "wss:" : "ws:";
+        ws = new WebSocket(proto + "//" + location.host + "/events/ws");
+      } catch (e) { setTimeout(connect, 2000); return; }
+      this._evtWs = ws;
+      ws.onmessage = (m) => { try { this._onVoiceEvent(JSON.parse(m.data)); } catch (e) {} };
+      ws.onclose = () => { setTimeout(connect, 2000); };   // survive backend restarts
+      ws.onerror = () => { try { ws.close(); } catch (e) {} };
+    };
+    connect();
+  }
+
+  _onVoiceEvent(ev) {
+    if (!ev || !ev.type) return;
+    if (ev.type === "listening") {
+      this._clearStream(); clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+      this.setState({ mode: "listening", caption: "", userTranscript: "" });
+    } else if (ev.type === "transcript") {
+      this._clearStream(); clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+      this.setState({ userTranscript: ev.text || "", caption: "", mode: "thinking" });
+    } else if (ev.type === "reply") {
+      if (ev.text) this._speakVisual(ev.text);   // stays 'speaking' until the desktop sends idle
+      else this.setState({ mode: "idle" });
+    } else if (ev.type === "idle") {
+      // The desktop finished speaking — drop to standby (a following 'listening' will override).
+      clearTimeout(this._safetyTimer);
+      this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 250);
+    } else if (ev.type === "notify") {
+      // A new WhatsApp/Instagram/email message just arrived — refresh the comms panel now.
+      if (this._pullComms) this._pullComms();
+    } else if (ev.type === "vision_frame") {
+      // JARVIS just looked at something (webcam/screen) — show the actual frame in the VISION
+      // panel so the HUD reflects what he sees. (No continuous camera hold → no clash with the
+      // backend `look` tool, which owns the webcam during a capture.)
+      this._visionFrame(ev.image);
+    } else if (ev.type === "mood") {
+      // Phase 5 — JARVIS's live emotional read drives the EMOTION panel (register + 4 axes).
+      this.setState({ emReal: {
+        reg: (ev.label || ev.register || "NEUTRAL"),
+        warmth: ev.warmth, play: ev.play, urgency: ev.urgency, focus: ev.focus,
+        humor: (ev.humor != null ? ev.humor : 0.4),
+      } });
+    } else if (ev.type === "call") {
+      // Phase 8 — a phone-call event from the Android companion. An incoming ring shows a
+      // tappable card (answer/decline/silence -> /calls/command); a cleared/missed event hides it.
+      if (ev.kind === "incoming") this._callCard(ev);
+      else this._hideCallCard();
+    } else if (ev.type === "identity") {
+      // Phase 11 — who is using JARVIS right now drives the IDENTITY panel (top-left).
+      this._setIdentity(ev);
+    }
+  }
+
+  // Phase 11 — seed the IDENTITY panel from the backend on load, then live-update on 'identity'.
+  _initIdentity() {
+    fetch(window.JARVIS_API + "/identity/active")
+      .then(r => r.json()).then(d => { if (d) this._setIdentity(d); }).catch(() => {});
+  }
+
+  _setIdentity(d) {
+    if (!d) return;
+    const tier = (d.tier || "owner");
+    this.setState({
+      identityLine: d.line || "ADITYA · OWNER",
+      identityVp: d.biometric || "VOICEPRINT 99.2%",
+      identityInitial: d.initial || "A",
+      identityStatus: (tier === "stranger") ? "UNVERIFIED" : "VERIFIED",
+    });
+  }
+
+  // Body-level incoming-call card (same overlay approach as _visionFrame, so a React render
+  // never wipes it). Buttons relay the command to the phone via the backend command queue.
+  _callCard(ev) {
+    let c = this._callEl;
+    if (!c || !document.body.contains(c)) {
+      c = document.createElement("div");
+      c.style.cssText = "position:fixed;z-index:10000;left:50%;top:28px;transform:translateX(-50%);" +
+        "min-width:300px;padding:14px 18px;border-radius:10px;background:rgba(6,16,24,.94);" +
+        "border:1px solid rgba(53,231,255,.55);box-shadow:0 0 26px rgba(53,231,255,.45);" +
+        "font-family:inherit;color:#cdeefb;text-align:center;backdrop-filter:blur(4px);";
+      document.body.appendChild(c);
+      this._callEl = c;
+    }
+    const who = (ev.name || ev.number || "Unknown");
+    const btn = (label, action, col) =>
+      `<button data-act="${action}" style="cursor:pointer;margin:0 5px;padding:7px 14px;border-radius:7px;` +
+      `border:1px solid ${col};background:transparent;color:${col};font:inherit;font-size:12px;letter-spacing:.5px;">` +
+      `${label}</button>`;
+    c.innerHTML =
+      '<div style="font-size:11px;letter-spacing:2px;opacity:.7;">INCOMING CALL</div>' +
+      '<div style="font-size:19px;margin:6px 0 12px;color:#fff;">' + who + '</div>' +
+      btn("ANSWER", "answer", "#4ade80") + btn("DECLINE", "decline", "#ff5d6c") +
+      btn("SILENCE", "silence", "#9bb6c4");
+    c.querySelectorAll("button").forEach((b) => {
+      b.onclick = () => {
+        fetch(window.JARVIS_API + "/calls/command", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: b.getAttribute("data-act") }),
+        }).catch(() => {});
+        this._hideCallCard();
+      };
+    });
+    c.style.display = "block";
+    clearTimeout(this._callTimer);
+    this._callTimer = setTimeout(() => this._hideCallCard(), 45000);  // ring TTL
+  }
+
+  _hideCallCard() {
+    clearTimeout(this._callTimer);
+    if (this._callEl) this._callEl.style.display = "none";
+  }
+
+  // Paint the captured frame over the VISION + GESTURE viewport (panel 02) for a few seconds.
+  // The panel is React-managed, so we overlay a BODY-level fixed <img> aligned to the viewport's
+  // box (injecting INTO the panel gets wiped on the next React render — that's why it didn't show).
+  _visionFrame(dataUrl) {
+    if (!dataUrl) return;
+    const lbl = Array.from(document.querySelectorAll("div"))
+      .find((d) => d.children.length === 0 && /CAM_01/.test(d.textContent || ""));
+    const vp = lbl ? lbl.parentElement : null;
+    let img = this._camImg;
+    if (!img || !document.body.contains(img)) {
+      img = document.createElement("img");
+      img.style.cssText = "position:fixed;z-index:9999;object-fit:cover;border-radius:6px;pointer-events:none;border:1px solid rgba(53,231,255,.55);box-shadow:0 0 18px rgba(53,231,255,.4);";
+      document.body.appendChild(img);
+      this._camImg = img;
+    }
+    img.src = dataUrl;
+    if (vp) {
+      const r = vp.getBoundingClientRect();
+      img.style.left = r.left + "px"; img.style.top = r.top + "px";
+      img.style.width = r.width + "px"; img.style.height = r.height + "px";
+    } else {
+      // viewport not found — fall back to a small corner preview so it's never invisible
+      img.style.right = "18px"; img.style.bottom = "18px"; img.style.left = "auto"; img.style.top = "auto";
+      img.style.width = "260px"; img.style.height = "150px";
+    }
+    img.style.display = "block";
+    this.setState({ visionActive: true });
+    clearTimeout(this._camTimer);
+    this._camTimer = setTimeout(() => {
+      if (this._camImg) this._camImg.style.display = "none";
+      this.setState({ visionActive: false });
+    }, 9000);
+  }
+
+  // Like _speak but WITHOUT browser audio — the desktop listener is the one speaking. Status
+  // stays 'speaking' until the desktop sends the matching 'idle' (so the HUD tracks real speech);
+  // autoIdle=true is for the local greeting, which has no desktop event behind it.
+  _speakVisual(text, autoIdle) {
+    clearTimeout(this._idleTimer); clearTimeout(this._safetyTimer);
+    this.setState({ mode: "speaking", activeModule: null });
+    this._streamText(text, "jarvis", autoIdle ? () => {
+      this._idleTimer = setTimeout(() => this.setState({ mode: "idle" }), 900);
+    } : null);
+    if (!autoIdle) this._safetyTimer = setTimeout(() => this.setState({ mode: "idle" }), 25000);
+  }
+
+  // ===== live memory graph: pull the real ego-graph (center + neighbours) from the backend =====
+  _initMemGraph() {
+    const pull = () => {
+      fetch(window.JARVIS_API + "/memory/graph")
+        .then(r => r.json())
+        .then(d => { if (d) this.setState({ memGraph: d }, () => this._renderMemSvg(d)); })
+        .catch(() => {});
+    };
+    pull();
+    this._memTimer = setInterval(pull, 30000);
+  }
+
+  // Draw the memory-graph nodes/labels by hand (SVG <text> won't take {{ }} props reliably).
+  _renderMemSvg(d) {
+    const el = this._memSvg; if (!el) return;
+    const esc = (s) => String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const nodes = (d && d.nodes) || [];
+    const P = [
+      { cx: 58, cy: 32, r: 9, tx: 58, ty: 20 }, { cx: 60, cy: 100, r: 9, tx: 60, ty: 116 },
+      { cx: 212, cy: 34, r: 9, tx: 212, ty: 22 }, { cx: 216, cy: 98, r: 9, tx: 216, ty: 114 },
+      { cx: 135, cy: 18, r: 8, tx: 135, ty: 10 }
+    ];
+    let s = '<g stroke="rgba(53,231,255,.35)" stroke-width="1" fill="none" stroke-dasharray="3 3" style="animation:edgeflow 1.4s linear infinite;">';
+    P.forEach((p, i) => { if (nodes[i]) s += '<line x1="135" y1="65" x2="' + p.cx + '" y2="' + p.cy + '"></line>'; });
+    s += '</g><g font-family="Share Tech Mono, monospace" font-size="8" fill="#bdeeff">';
+    s += '<circle cx="135" cy="65" r="16" fill="rgba(255,178,77,.18)" stroke="#ffb24d" stroke-width="1.2" style="animation:nodepulse 3s ease-in-out infinite;"></circle>';
+    s += '<text x="135" y="68" text-anchor="middle" fill="#ffce8a">' + esc((d && d.center) || "") + '</text>';
+    P.forEach((p, i) => {
+      if (!nodes[i]) return;
+      s += '<circle cx="' + p.cx + '" cy="' + p.cy + '" r="' + p.r + '" fill="rgba(53,231,255,.15)" stroke="#35e7ff" style="animation:nodepulse 3s ease-in-out infinite ' + (0.3 * (i + 1)).toFixed(1) + 's;"></circle>';
+      s += '<text x="' + p.tx + '" y="' + p.ty + '" text-anchor="middle">' + esc(nodes[i]) + '</text>';
+    });
+    s += '</g>';
+    el.innerHTML = s;
+  }
+
+  // ===== live ticker: pull real crypto / news / weather from the backend every 60s =====
+  _initTicker() {
+    const pull = () => {
+      fetch(window.JARVIS_API + "/ticker")
+        .then(r => r.json())
+        .then(d => { if (d && d.items && d.items.length) this.setState({ tickerItems: d.items }); })
+        .catch(() => {});
+    };
+    pull();
+    this._tickerTimer = setInterval(pull, 60000);
+  }
+
+  // ===== live UNIFIED COMMS (panel 06): real WhatsApp / Instagram / email from the backend =====
+  // Replaces the canned msgRaw. Refreshes every 20s and immediately on a 'notify' bus event
+  // (a new message just landed). Once we've fetched once, the panel shows ONLY real data —
+  // even if that's an empty inbox (no fake messages, per the finality rule).
+  _initComms() {
+    this._pullComms();
+    this._commsTimer = setInterval(() => this._pullComms(), 20000);
+  }
+
+  _pullComms() {
+    fetch(window.JARVIS_API + "/messaging/inbox?limit=6")
+      .then(r => r.json())
+      .then(d => {
+        const meta = {
+          whatsapp:  { ch: "WA", chColor: "#4dffb0", chBg: "rgba(77,255,176,.16)" },
+          instagram: { ch: "IG", chColor: "#ff8ad1", chBg: "rgba(255,93,177,.16)" },
+          email:     { ch: "@",  chColor: "#ffce8a", chBg: "rgba(255,178,77,.16)" }
+        };
+        const items = ((d && d.items) || []).map((it) => {
+          const mm = meta[it.channel] || { ch: "?", chColor: "#7df0ff", chBg: "rgba(53,231,255,.16)" };
+          return { ch: mm.ch, from: it.from || "Unknown", txt: it.preview || "",
+                   hot: it.importance === "high", chColor: mm.chColor, chBg: mm.chBg };
+        });
+        let n = 0; const u = (d && d.unread) || {};
+        Object.keys(u).forEach((k) => { n += u[k]; });
+        this.setState({ commsItems: items, commsUnread: n });
+      })
+      .catch(() => {});
+  }
+
+  _onWakeResult(e) {
+    const r = e.results[e.results.length - 1];
+    const raw = (r[0] && r[0].transcript) || "";
+
+    // In command mode we're capturing what the user says AFTER the wake word.
+    if (this._cmdMode) {
+      if (!r.isFinal) { this.setState({ userTranscript: raw.trim() }); return; }
+      clearTimeout(this._cmdTimer); this._cmdMode = false;
+      const cmd = raw.trim();
+      if (cmd) this._ask(cmd); else this.setState({ mode: "idle" });
+      return;
+    }
+    if (!r.isFinal) return;
+
+    // Detect the wake phrase (fuzzy — accent/mishear tolerant), then keep the real command
+    // from the ORIGINAL transcript so casing and numbers survive.
+    const low = raw.toLowerCase().replace(/[^a-z ]+/g, " ").replace(/\s+/g, " ").trim();
+    if (!/(?:wake up|wakeup|wake)\s+(?:jarvis|jervis|jaravis|jarwis|jarviss|travis)\b/.test(low)) return;
+    const after = raw.replace(/^.*?(?:jarvis|jervis|jaravis|jarwis|jarviss|travis)[\s,.!?:-]*/i, "").trim();
+
+    if (after) {
+      this._ask(after);                       // one-breath: "wake up jarvis, what's the weather"
+    } else {
+      this.setState({ mode: "listening", caption: "", userTranscript: "" });
+      this._cmdMode = true;                   // silently capture the next utterance as the command
+      this._cmdTimer = setTimeout(() => {
+        this._cmdMode = false;
+        if (this.state.mode === "listening") this.setState({ mode: "idle" });
+      }, 9000);
+    }
+  }
+
+  async _startRec() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true }
+      });
+      const AC = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AC();
+      const src = ctx.createMediaStreamSource(stream);
+      const proc = ctx.createScriptProcessor(4096, 1, 1);
+      const chunks = [];
+      proc.onaudioprocess = (e) => { chunks.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+      src.connect(proc); proc.connect(ctx.destination);
+      this._recState = { stream, ctx, proc, src, chunks, sr: ctx.sampleRate, recording: true };
+      this.setState({ mode: "listening", caption: "", userTranscript: "" });
+    } catch (e) {
+      this._speak("I can't reach your microphone, sir. Check the browser's mic permission.");
+    }
+  }
+
+  _stopRec() {
+    const r = this._recState; if (!r || !r.recording) return; r.recording = false;
+    try { r.proc.disconnect(); r.src.disconnect(); r.stream.getTracks().forEach(t => t.stop()); } catch (e) {}
+    let total = 0; r.chunks.forEach(c => total += c.length);
+    const buf = new Float32Array(total); let o = 0; r.chunks.forEach(c => { buf.set(c, o); o += c.length; });
+    try { r.ctx.close(); } catch (e) {}
+    if (total < r.sr * 0.2) { this.setState({ mode: "idle" }); return; }  // too short
+    const wav = this._encodeWav(buf, r.sr, 16000);
+    this.setState({ mode: "thinking" });
+    const fd = new FormData();
+    fd.append("file", new Blob([wav], { type: "audio/wav" }), "mic.wav");
+    fetch(window.JARVIS_API + "/voice/stt", { method: "POST", body: fd })
+      .then(res => res.json())
+      .then(d => { const t = (d && d.text || "").trim(); if (t) this._ask(t); else this.setState({ mode: "idle" }); })
+      .catch(() => this.setState({ mode: "idle" }));
+  }
+
+  _encodeWav(samples, inRate, outRate) {
+    let data = samples;
+    if (outRate && outRate !== inRate) {
+      const ratio = inRate / outRate, n = Math.floor(samples.length / ratio);
+      data = new Float32Array(n);
+      for (let i = 0; i < n; i++) data[i] = samples[Math.floor(i * ratio)];
+    }
+    const rate = outRate || inRate;
+    const ab = new ArrayBuffer(44 + data.length * 2), view = new DataView(ab);
+    const ws = (off, s) => { for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i)); };
+    ws(0, "RIFF"); view.setUint32(4, 36 + data.length * 2, true); ws(8, "WAVE"); ws(12, "fmt ");
+    view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+    view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+    ws(36, "data"); view.setUint32(40, data.length * 2, true);
+    let off = 44; for (let i = 0; i < data.length; i++) { let s = Math.max(-1, Math.min(1, data[i])); view.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true); off += 2; }
+    return ab;
+  }
+
+}
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    let _reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (_reloaded) return; _reloaded = true; location.reload();   // new build took over -> refresh once
+    });
+    window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js')
+      .then(reg => reg.update()).catch(()=>{}));
+  }
+</script>
+</body>
+</html>

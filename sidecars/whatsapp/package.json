@@ -1,0 +1,19 @@
+{
+  "name": "jarvis-whatsapp-sidecar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JARVIS Phase 7 — local WhatsApp bridge (whatsapp-web.js). QR-paired once; session persists. Exposes /status /inbox /send and pushes incoming messages to the JARVIS backend webhook.",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.26.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
